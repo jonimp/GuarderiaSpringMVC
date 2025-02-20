@@ -13,15 +13,12 @@
     <body>
         <h1>Primer ingreso a la aplicacion</h1>
         <h2>Crear usuario/administrador</h2>
-        <form method="post" action="/consulta">
-            <p>
-                <select name="color">
-                    <c:forEach var="color" items="${colores}" >
-                        <option value="${color}">${color}</option>
-                    </c:forEach>
-                </select>
-                <input type="submit" value="Enviar">
-            </p>
+        <form method="post" action="/acceso">
+            <form action="opciones.html" method="post">
+                <input type="text" name="usuario" placeholder="Usuario" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
         </form>
     </body>
 </html>
