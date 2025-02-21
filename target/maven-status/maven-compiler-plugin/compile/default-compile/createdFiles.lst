@@ -1,2 +1,8 @@
-prog2/guarderiaspring/resources/JakartaEE11Resource.class
-prog2/guarderiaspring/JakartaRestConfiguration.class
+prog2/guarderiaspring/Socio.class
+prog2/guarderiaspring/Empleado.class
+prog2/guarderiaspring/Configuracion.class
+prog2/guarderiaspring/Inicializador.class
+prog2/guarderiaspring/UsuariosDAO.class
+prog2/guarderiaspring/Administrador.class
+prog2/guarderiaspring/Controlador.class
+prog2/guarderiaspring/Usuario.class
