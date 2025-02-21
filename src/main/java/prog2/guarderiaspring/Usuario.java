@@ -4,7 +4,7 @@ public abstract class Usuario {
     
     private String usuario;
     private String password;
-       
+    
     public String getUsuario(){
         return usuario;
     }
@@ -19,6 +19,12 @@ public abstract class Usuario {
     
     public void setPassword(String password){
         this.password = password;
+    }
+    
+    public abstract String getTipo();
+
+    public Object getContrasena() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

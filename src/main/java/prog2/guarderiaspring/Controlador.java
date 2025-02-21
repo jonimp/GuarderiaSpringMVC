@@ -11,12 +11,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Controlador {
     
     @Autowired
-    private UsuariosDAO usuarioDAO;
+    private ServicioUsuario ServicioUsuario;
     
     @GetMapping("/")
-    public String mostrarInicio(Model model) {
-        
+    public String mostrarInicio() {
         return "index";
     }
+    
+    @PostMapping("/acceso")
+    public String usuarioLogeado(@RequestParam String usuario, 
+                                @RequestParam String contrasena, 
+                                Model model) {
+        Usuario user = ServicioUsuario.validarUsuario(usuario, contrasena);
+        
+        if (user != null) {
+            switch (user.getTipo()) {
+                case "administrador":
+                    return "redirect:/admin";
+                case "empleado":
+                    return "redirect:/empleado";
+                case "socio":
+                    return "redirect:/socio";
+                default:
+                    model.addAttribute("error", "Tipo de usuario desconocido");
+                    return "index";
+            }
+        } else {
+            model.addAttribute("error", "Usuario o contraseña incorrectos");
+            return "index";
+        }
+        
+       // return "opcion";
+    }
+     
+
     
 }

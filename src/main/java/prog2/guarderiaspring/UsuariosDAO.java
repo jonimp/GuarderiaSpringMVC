@@ -29,6 +29,38 @@ public class UsuariosDAO {
         this.dbPswd = dbPswd;
     }
     
+    
+    public Usuario obtenerUsuario(String usuario) {
+         try {
+            Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+            Statement stmt = con.createStatement();
+            stmt.execute("SELECT " + usuario + " FROM usuarios");
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        
+
+        return jdbcTemplate.queryForObject(sql, new Object[]{usuario}, (rs, rowNum) -> {
+            String tipo = rs.getString("nivelAcceso");
+
+            switch (tipo) {
+                case "administrador":
+                    return new Administrador(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
+                case "empleado":
+                    return new Empleado(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
+                case "socio":
+                    return new Socio(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
+                default:
+                    throw new IllegalArgumentException("Tipo de usuario no reconocido: " + tipo);
+            }
+        });
+    }
+    
     /*
     public void consultar(String nombre) {
         if (!nombre.isEmpty()) {
@@ -105,4 +137,8 @@ public class UsuariosDAO {
     }
 
     */
+
+    public Usuario obtenerUsuarioPorNombre(String usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

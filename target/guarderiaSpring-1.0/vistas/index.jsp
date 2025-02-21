@@ -6,8 +6,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="/css/estilos.css">
-        <link rel="icon" type="image/x-icon" href="/img/casita.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="/img/casita.ico">
+        <link rel="icon" type="image/x-icon" href="/imagenes/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.ico">
         <title>Guardería Spring Web MVC</title>
     </head>
     <body>
