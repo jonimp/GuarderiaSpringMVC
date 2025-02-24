@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="menu-container">
-        <h2>Opciones de Administrador</h2>
+        <h2>SESIÓN DE ADMINISTRADOR</h2>
         <form action="altaSocio" method="post">
             <button type="submit">Dar alta socio</button>
         </form>

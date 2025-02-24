@@ -28,13 +28,29 @@ public class UsuariosDAO {
     }
 /*----------------------------------------------------------------------------*/       
      public Usuario validarUsuario(String usuario, String password) {
-        String sql = "SELECT usuario, password, acceso   FROM usuarios WHERE usuario = ? AND password = ?";
+        String sql = """
+        SELECT usuario, password, acceso, 'administrador' as tipo 
+        FROM administradores 
+        WHERE usuario = ? AND password = ?
+        UNION ALL
+        SELECT usuario, password, acceso, 'empleado' as tipo 
+        FROM empleados 
+        WHERE usuario = ? AND password = ?
+        UNION ALL
+        SELECT usuario, password, acceso, 'socio' as tipo 
+        FROM socios 
+        WHERE usuario = ? AND password = ?;
+        """;
         
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
             PreparedStatement pstmt = con.prepareStatement(sql)) {
            
             pstmt.setString(1, usuario);
             pstmt.setString(2, password);
+            pstmt.setString(3, usuario);
+            pstmt.setString(4, password);
+            pstmt.setString(5, usuario);
+            pstmt.setString(6, password);
             
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -58,7 +74,7 @@ public class UsuariosDAO {
     }
 /*----------------------------------------------------------------------------*/    
    public Administrador buscarAdministrador(String usuario) {
-    String sql = "SELECT * FROM administrador WHERE usuario = ?";
+    String sql = "SELECT * FROM administradores WHERE usuario = ?";
 
     try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
          PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -80,7 +96,7 @@ public class UsuariosDAO {
     }
 /*----------------------------------------------------------------------------*/   
 public Empleado buscarEmpleado(String usuario) {
-    String sql = "SELECT * FROM empleado WHERE usuario = ?";
+    String sql = "SELECT * FROM empleados WHERE usuario = ?";
 
     try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
          PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -107,7 +123,7 @@ public Empleado buscarEmpleado(String usuario) {
 }
 /*----------------------------------------------------------------------------*/   
     public Socio buscarSocio(String usuario) {
-        String sql = "SELECT * FROM socio WHERE usuario = ?";
+        String sql = "SELECT * FROM socios WHERE usuario = ?";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
              PreparedStatement pstmt = con.prepareStatement(sql)) {

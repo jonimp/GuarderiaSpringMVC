@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/estiloSocio.css">
-    <title>Menú Administrador</title>
+    <title>Menú Socio</title>
 </head>
 <body>
     <div class="menu-container">
-        <h2>Opciones de Socio</h2>
+        <h2>SESIÓN DE SOCIO</h2>
         <form action="datosPersonales" method="post">
             <button type="submit">Consultar datos personales</button>
         </form>

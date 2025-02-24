@@ -13,7 +13,6 @@ public class Administrador extends Usuario {
     public String getNivelAcceso(){
         return nivelAcceso;
     }
-    
 
 }
     

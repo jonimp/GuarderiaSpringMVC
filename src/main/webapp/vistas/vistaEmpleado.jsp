@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/estiloEmpleado.css">
-    <title>Menú Administrador</title>
+    <title>Menú Empleado</title>
 </head>
 <body>
     <div class="menu-container">
-        <h2>Opciones de Empleado</h2>
+        <h2>SESIÓN DE EMPLEADO</h2>
         <form action="datosPersonales" method="post">
             <button type="submit">Consultar datos personales</button>
         </form>
