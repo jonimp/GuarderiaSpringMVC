@@ -15,7 +15,7 @@
             <div class="login-box">
                 <h1>Guarderia de coches</h1>
                 <h2>Iniciar Sesión</h2>
-                <form method="post" action="/acceso">
+                <form method="post" action="/acceso" class="login-form">
                         <input type="text" name="usuario" placeholder="Usuario" required>
                         <input type="password" name="contrasena" placeholder="Contraseña" required>
                         <button type="submit">Ingresar</button>

@@ -21,10 +21,8 @@ public abstract class Usuario {
         this.password = password;
     }
     
-    public abstract String getTipo();
+    public abstract String getNivelAcceso();
 
-    public Object getContrasena() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
     
 }

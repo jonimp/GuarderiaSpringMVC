@@ -2,11 +2,9 @@ package prog2.guarderiaspring;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -17,7 +15,7 @@ public class UsuariosDAO {
     private final String dbFullURL;
     private final String dbUser;
     private final String dbPswd;
-    
+        
     @Autowired
     public UsuariosDAO(
             @Qualifier("dbName") String dbName,
@@ -28,38 +26,113 @@ public class UsuariosDAO {
         this.dbUser = dbUser;
         this.dbPswd = dbPswd;
     }
-    
-    
-    public Usuario obtenerUsuario(String usuario) {
-         try {
-            Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
-            Statement stmt = con.createStatement();
-            stmt.execute("SELECT " + usuario + " FROM usuarios");
-            ResultSet rs = stmt.getResultSet();
-            while (rs.next()) {
-                
-            }
-            con.close();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
+/*----------------------------------------------------------------------------*/       
+     public Usuario validarUsuario(String usuario, String password) {
+        String sql = "SELECT usuario, password, acceso   FROM usuarios WHERE usuario = ? AND password = ?";
         
-
-        return jdbcTemplate.queryForObject(sql, new Object[]{usuario}, (rs, rowNum) -> {
-            String tipo = rs.getString("nivelAcceso");
-
-            switch (tipo) {
-                case "administrador":
-                    return new Administrador(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
-                case "empleado":
-                    return new Empleado(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
-                case "socio":
-                    return new Socio(rs.getString("usuario"), rs.getString("password"), rs.getString("nivelAcceso"));
-                default:
-                    throw new IllegalArgumentException("Tipo de usuario no reconocido: " + tipo);
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+            PreparedStatement pstmt = con.prepareStatement(sql)) {
+           
+            pstmt.setString(1, usuario);
+            pstmt.setString(2, password);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    String tipoAcceso = rs.getString("acceso");
+                    
+                    // Creamos el usuario según su tipo
+                    return switch (tipoAcceso.toLowerCase()) {
+                        case "administrador" -> buscarAdministrador(usuario);
+                        case "empleado" -> buscarEmpleado(usuario);
+                        case "socio" -> buscarSocio(usuario);
+                        default -> null;
+                    };
+                }
             }
-        });
+            return null; // Usuario no encontrado
+            
+        } catch (SQLException e) {
+            System.err.println("Error al validar usuario: " + e.getMessage());
+            return null;
+        }
     }
+/*----------------------------------------------------------------------------*/    
+   public Administrador buscarAdministrador(String usuario) {
+    String sql = "SELECT * FROM administrador WHERE usuario = ?";
+
+    try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+        pstmt.setString(1, usuario);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return new Administrador(
+                    rs.getString("usuario"),
+                    rs.getString("password")
+                );
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al buscar administrador: " + e.getMessage());
+    }
+    return null; // Si no se encuentra
+    }
+/*----------------------------------------------------------------------------*/   
+public Empleado buscarEmpleado(String usuario) {
+    String sql = "SELECT * FROM empleado WHERE usuario = ?";
+
+    try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+        pstmt.setString(1, usuario);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return new Empleado(
+                    rs.getString("usuario"),
+                    rs.getString("password"),
+                    rs.getString("codigo"),
+                    rs.getString("nombre"),
+                    rs.getString("direccion"),
+                    rs.getString("telefono"),
+                    rs.getString("especialidad")
+                );
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al buscar empleado: " + e.getMessage());
+    }
+    return null;
+}
+/*----------------------------------------------------------------------------*/   
+    public Socio buscarSocio(String usuario) {
+        String sql = "SELECT * FROM socio WHERE usuario = ?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, usuario);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Socio(
+                        rs.getString("usuario"),
+                        rs.getString("password"),
+                        rs.getString("dni"),
+                        rs.getString("nombre"),
+                        rs.getString("telefono"),    
+                        rs.getString("direccion")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al buscar socio: " + e.getMessage());
+        }
+        return null;
+    }
+}
+   
     
     /*
     public void consultar(String nombre) {
@@ -138,7 +211,5 @@ public class UsuariosDAO {
 
     */
 
-    public Usuario obtenerUsuarioPorNombre(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-}
+    
+

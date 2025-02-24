@@ -4,22 +4,23 @@ import java.time.LocalDateTime;
 
 public class Socio extends Usuario {
     
-    private String DNI, nombre, direccion, telefono, nivelAcceso;
+    private String DNI, nombre, direccion, telefono;
+    private final String nivelAcceso = "socio";
     private LocalDateTime fechaAlta;
         
-    public Socio(String u, String p, String DNI, String nombre, String telefono, String direccion, String nivelAcceso){
+    public Socio(String u, String p, String DNI, String nombre, String telefono, String direccion){
         setUsuario(u);
         setPassword(p);
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
         this.DNI = DNI;
-        this.nivelAcceso = nivelAcceso;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion;     
+        this.fechaAlta = LocalDateTime.now();
     }
 
     @Override
-    public String getTipo(){
-        return "socio";
+    public String getNivelAcceso(){
+        return nivelAcceso;
     }
     
     public String getDNI() {
@@ -61,8 +62,5 @@ public class Socio extends Usuario {
     public void setFechaAlta(LocalDateTime fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
-    
-    public String getNivelAcceso(){
-        return nivelAcceso;
-    }
+ 
 }
