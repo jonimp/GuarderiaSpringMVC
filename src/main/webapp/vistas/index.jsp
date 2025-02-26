@@ -13,13 +13,16 @@
     <body>
         
             <div class="login-box">
-                <h1>Guarderia de coches</h1>
+                <h1 class="titulo">Guarderia de coches</h1>
                 <h2>Iniciar Sesión</h2>
-                <form method="post" action="/acceso" class="login-form">
+                <form method="post" action="/acceso" class="login-form" autocomplete="off">
                         <input type="text" name="usuario" placeholder="Usuario" required>
                         <input type="password" name="password" placeholder="Contraseña" required>
                         <button type="submit">Ingresar</button>
                 </form> 
             </div>
+        
+        
+        
     </body>
 </html>

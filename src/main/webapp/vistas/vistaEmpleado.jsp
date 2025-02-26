@@ -15,8 +15,8 @@
         <form action="vehiculosACargo" method="post">
             <button type="submit">Consultar vehiculos a cargo</button>
         </form>
-        <form action="salir" method="post">
-            <button type="submit">Salir del menú</button>
+        <form action="logout" method="get">
+            <button type="submit">Cerrar sesión</button>
         </form>
     </div>
 </body>

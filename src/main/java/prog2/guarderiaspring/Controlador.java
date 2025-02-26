@@ -1,5 +1,6 @@
 package prog2.guarderiaspring;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,8 @@ public class Controlador {
 
     @Autowired
     private UsuariosDAO usDAO;
-
+    
+   
     @GetMapping("/")
     public String mostrarInicio() {
         return "index";
@@ -37,7 +39,14 @@ public class Controlador {
             model.addAttribute("error", "Usuario o contraseña incorrectos");
             return "index";
         }
-
     }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session, Model model) {
+        session.invalidate();
+        return "index";
+    }
+    
+    @GetMapping(/buscar)
 
 }

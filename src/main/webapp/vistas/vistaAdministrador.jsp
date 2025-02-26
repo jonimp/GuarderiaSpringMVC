@@ -9,34 +9,27 @@
 <body>
     <div class="menu-container">
         <h2>SESIÓN DE ADMINISTRADOR</h2>
-        <form action="altaSocio" method="post">
-            <button type="submit">Dar alta socio</button>
+        <form action="buscar" method="get">
+            <button type="submit">Buscar usuario</button>
         </form>
-        <form action="altaEmpleado" method="post">
-            <button type="submit">Dar alta empleado</button>
+        <form action="alta" method="post">
+            <button type="submit">Registrar Usuario</button>
         </form>
-        <form action="altaAdministrador" method="post">
-            <button type="submit">Dar alta administrador</button>
+        <form action="baja" method="post">
+            <button type="submit">Eliminar Usuario</button>
         </form>
-        <form action="listarUsuarios" method="get">
-            <button type="submit">Listar usuarios</button>
+        <form action="garageDisponible" method="get">
+            <button type="submit">Ver disponibilidad garages</button>
         </form>
-        <form action="bajaUsuario" method="post">
-            <button type="submit">Dar baja usuario</button>
-        </form>
-        <form action="gestionarVehiculosGarages" method="get">
+        <form action="gestionVehiculo" method="get">
             <button type="submit">Gestionar vehiculos y garages</button>
         </form>
-        <form action="consultarDisponibilidadGarage" method="get">
-            <button type="submit">Consultar disponibilidad garage</button>
-        </form>
-        <form action="asignarEmpleadoGarage" method="post">
+        <form action="asignarAGarage" method="post">
             <button type="submit">Asignar empleado a garage</button>
         </form>
-        <form action="salir" method="post">
-            <button type="submit">Salir del menú</button>
+        <form action="logout" method="get">
+            <button type="submit">Cerrar sesión</button>
         </form>
     </div>
 </body>
 </html>
-

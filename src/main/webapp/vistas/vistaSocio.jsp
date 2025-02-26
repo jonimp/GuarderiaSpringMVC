@@ -10,13 +10,13 @@
     <div class="menu-container">
         <h2>SESIÓN DE SOCIO</h2>
         <form action="datosPersonales" method="post">
-            <button type="submit">Consultar datos personales</button>
+            <button type="submit">Ver datos personales</button>
         </form>
         <form action="estadoGarage" method="post">
-            <button type="submit">Ver estado de garage</button>
+            <button type="submit">Estado de garage</button>
         </form>
-        <form action="salir" method="post">
-            <button type="submit">Salir del menú</button>
+        <form action="logout" method="get">
+            <button type="submit">Cerrar sesión</button>
         </form>
     </div>
 </body>
