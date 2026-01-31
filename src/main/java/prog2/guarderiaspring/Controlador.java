@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Controlador {
-
+    
     @Autowired
     private UsuariosDAO usDAO;
     
@@ -47,6 +47,12 @@ public class Controlador {
         return "index";
     }
     
-    @GetMapping(/buscar)
-
+    @GetMapping("/buscar")
+    public String mostrarBusqueda() {
+        return "buscarUsuario";
+    }
+    
+   
+   
+    
 }

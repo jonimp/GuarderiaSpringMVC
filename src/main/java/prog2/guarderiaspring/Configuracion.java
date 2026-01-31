@@ -5,7 +5,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -15,11 +14,6 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 public class Configuracion implements WebMvcConfigurer {
 
-    @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry reg) {
-        reg.addResourceHandler("/**").addResourceLocations("/");
-    }
-    
  
 
     @Bean
@@ -38,12 +32,12 @@ public class Configuracion implements WebMvcConfigurer {
 
     @Bean(name = "dbURL")
     public String getDBURL() {
-        return "127.0.1.0";
+        return "localhost";
     }
 
     @Bean(name = "dbUser")
     public String getDBUser() {
-        return "root";
+        return "";
     }
 
     @Bean(name = "dbPswd")

@@ -26,7 +26,9 @@ public class UsuariosDAO {
         this.dbUser = dbUser;
         this.dbPswd = dbPswd;
     }
-/*----------------------------------------------------------------------------*/       
+/*----------------------------------------------------------------------------*/
+    
+/*----------------------------------------------------------------------------*/    
      public Usuario validarUsuario(String usuario, String password) {
         String sql = """
         SELECT usuario, password, acceso, 'administrador' as tipo 
@@ -54,7 +56,7 @@ public class UsuariosDAO {
             
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    String tipoAcceso = rs.getString("acceso");
+                    String tipoAcceso = rs.getString("tipo");
                     
                     // Creamos el usuario según su tipo
                     return switch (tipoAcceso.toLowerCase()) {
@@ -72,7 +74,9 @@ public class UsuariosDAO {
             return null;
         }
     }
-/*----------------------------------------------------------------------------*/    
+/*----------------------------------------------------------------------------*/
+     
+/*----------------------------------------------------------------------------*/     
    public Administrador buscarAdministrador(String usuario) {
     String sql = "SELECT * FROM administradores WHERE usuario = ?";
 
@@ -94,7 +98,9 @@ public class UsuariosDAO {
     }
     return null; // Si no se encuentra
     }
-/*----------------------------------------------------------------------------*/   
+/*----------------------------------------------------------------------------*/  
+   
+/*----------------------------------------------------------------------------*/
 public Empleado buscarEmpleado(String usuario) {
     String sql = "SELECT * FROM empleados WHERE usuario = ?";
 
@@ -121,7 +127,9 @@ public Empleado buscarEmpleado(String usuario) {
     }
     return null;
 }
-/*----------------------------------------------------------------------------*/   
+/*----------------------------------------------------------------------------*/ 
+
+/*----------------------------------------------------------------------------*/
     public Socio buscarSocio(String usuario) {
         String sql = "SELECT * FROM socios WHERE usuario = ?";
 
@@ -147,85 +155,8 @@ public Empleado buscarEmpleado(String usuario) {
         }
         return null;
     }
+/*----------------------------------------------------------------------------*/
+    
+/*----------------------------------------------------------------------------*/    
 }
-   
-    
-    /*
-    public void consultar(String nombre) {
-        if (!nombre.isEmpty()) {
-            connection = obtenerConexion();
-            String q = "SELECT " + campoNombre + ", " + campoTelefono
-                    + " FROM " + tabla
-                    + " WHERE " + campoNombre + "='" + nombre + "'";
-            try {
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(q);
-                resultadoConsulta = "";
-                while (resultSet.next()) {
-                    resultadoConsulta = resultadoConsulta
-                            + resultSet.getString(1) + ": "
-                            + resultSet.getString(2) + System.getProperty("line.separator");
-                }
-                if (resultadoConsulta.isEmpty()) {
-                    resultadoConsulta = tituloConsultaVacia + nombre + ".";
-                }
-                resultSet.close();
-                statement.close();
-            } catch (SQLException ex) {
-                reportException(ex.getMessage());
-            }
-        }
-    }
-    
-    public void darDeAlta(String nombre, String telefono) {
-        if (!nombre.isEmpty()) {
-            connection = obtenerConexion();
-            String u = "INSERT INTO " + tabla
-                    + " (" + campoNombre + ", " + campoTelefono + ") "
-                    + " VALUES ('" + nombre + "', '" + telefono + "')";
-            try {
-                Statement statement = connection.createStatement();
-                cantidadRegistros = statement.executeUpdate(u);
-                statement.close();
-            } catch (SQLException ex) {
-                reportException(ex.getMessage());
-            }
-        }
-    }
-
-    public void darDeBaja(String nombre) {
-        if (!nombre.isEmpty()) {
-            connection = obtenerConexion();
-            String u = "DELETE FROM " + tabla
-                    + " WHERE " + campoNombre + "='" + nombre + "'";
-            try {
-                Statement statement = connection.createStatement();
-                cantidadRegistros = statement.executeUpdate(u);
-                statement.close();
-            } catch (SQLException ex) {
-                reportException(ex.getMessage());
-            }
-        }
-    }
-
-    public void modificar(String nombre, String telefono) {
-        if (!nombre.isEmpty()) {
-            connection = obtenerConexion();
-            String u = "UPDATE " + tabla
-                    + " SET " + campoNombre + "='" + nombre + "', "
-                    + campoTelefono + "='" + telefono + "' "
-                    + " WHERE " + campoNombre + "='" + nombre + "'";
-            try {
-                Statement statement = connection.createStatement();
-                cantidadRegistros = statement.executeUpdate(u);
-                statement.close();
-            } catch (SQLException ex) {
-                reportException(ex.getMessage());
-            }
-        }
-    }
-
-    */
-
-    
 
