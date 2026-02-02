@@ -6,6 +6,7 @@ import jakarta.servlet.ServletRegistration;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 public class Inicializador implements WebApplicationInitializer {
 
@@ -18,4 +19,7 @@ public class Inicializador implements WebApplicationInitializer {
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
     }
+    
+    
+
 }

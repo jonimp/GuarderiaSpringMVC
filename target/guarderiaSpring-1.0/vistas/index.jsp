@@ -4,25 +4,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="/css/estilos.css">
-        <link rel="icon" type="image/x-icon" href="/imagenes/favicon.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.ico">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estiloIndex.css">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/imagenes/favicon.ico">
         <title>Guardería Spring Web MVC</title>
     </head>
     <body>
         
+        <header class="banda-superior">
+        <div class="contendor-cabecera">
+            
+
+            <nav class="menu-principal">
+                <div class="lista-menu">
+                    <a href="#" class="enlace-menu">Inicio</a>
+                    <a href="#" class="enlace-menu">Servicios</a>
+                    <a href="#" class="enlace-menu">Galería</a>
+                    <a href="#" class="enlace-menu">Contacto</a>
+                </div>
+            </nav>
+
+            
+
+        </div>    
+        </header>
+        
+      
+            <main class="contenido-principal">
             <div class="login-box">
-                <h1 class="titulo">Guarderia de coches</h1>
+                <h1 class="titulo">Guardería de vehículos de arrastre</h1>
                 <h2>Iniciar Sesión</h2>
                 <form method="post" action="/acceso" class="login-form" autocomplete="off">
-                        <input type="text" name="usuario" placeholder="Usuario" required>
-                        <input type="password" name="password" placeholder="Contraseña" required>
-                        <button type="submit">Ingresar</button>
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit">Ingresar</button>
                 </form> 
             </div>
+        </main>
         
+    
         
-        
+
+
+
     </body>
 </html>
