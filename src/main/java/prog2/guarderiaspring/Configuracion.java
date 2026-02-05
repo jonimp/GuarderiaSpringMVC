@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 @Configuration
 @ComponentScan("prog2.guarderiaspring")
@@ -17,12 +18,17 @@ public class Configuracion implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/css/**")
-               .addResourceLocations("/css/");
-            
-            registry.addResourceHandler("/imagenes/**")
-                    .addResourceLocations("/imagenes/");
-}
+        registry.addResourceHandler("/css/**")
+                .addResourceLocations("/css/");
+
+        registry.addResourceHandler("/imagenes/**")
+                .addResourceLocations("/imagenes/");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new Interceptor());
+    }
 
     @Bean
     public ViewResolver viewResolver() {
@@ -45,7 +51,7 @@ public class Configuracion implements WebMvcConfigurer {
 
     @Bean(name = "dbUser")
     public String getDBUser() {
-        return "";
+        return "root";
     }
 
     @Bean(name = "dbPswd")

@@ -9,19 +9,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #eee9ce;
     height: 100vh;
-    overflow: hidden; /* Elimina el scroll si no es necesario */
+    overflow: hidden;
 }
 
 /* -------------------- */
 /* CABECERA / HEADER */
 /* -------------------- */
 
-.cabecera {
-    background-color: #2c3e50;
-    width: 100%;
-    height: 80px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+
 
 .banda-superior {
     min-height: 80px; /* Altura mínima para mantener el color */
@@ -93,10 +88,11 @@ body {
     align-items: center;
     padding: 20px;
     background: linear-gradient(135deg, #dfbe94 0%, #693a04 100%);
+    flex-direction: column;
 }
 
 .login-box {
-    margin-top: -180px; /* Ajusta este valor según necesites */
+    margin-top: 50px;
     background-color: #eee9ce;
     padding: 40px;
     border-radius: 12px;
@@ -120,13 +116,13 @@ body {
 
 .titulo {
     color: #693a04;
-    margin-bottom: 40px;
-    font-size: 28px;
+    margin-bottom: 20px;
+    font-size: 30px;
 }
 
 .login-box h2 {
     color: #8d857f;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     font-weight: 400;
     font-size: 20px;
 }
@@ -134,20 +130,21 @@ body {
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .login-form input {
     padding: 15px;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
+    height: 25px;
     font-size: 16px;
     transition: all 0.3s ease;
     outline: none;
 }
 
 .login-form input:focus {
-    border-color: #3498db;
+    border-color: #693a04;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
@@ -164,6 +161,41 @@ body {
     margin-top: 10px;
 }
 
+/* Contenedor principal de fotos */
+.contenedor-fotos {
+    display: flex;
+    justify-content: center; /* Centra las fotos horizontalmente */
+    gap: 30px; /* Separación entre fotos */
+    margin-top: 100px; /* Espacio entre el login box y las fotos */
+    padding: 20px;
+    flex-wrap: wrap; /* Permite que las fotos bajen en pantallas pequeñas */
+}
+
+/* Cada item de foto */
+.foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 220px; /* Ancho máximo de cada foto */
+    text-align: center;
+}
+
+/* Estilo para las imágenes */
+.foto img {
+    width: 210px;
+    height: 150px;
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.foto img:hover {
+    transform: scale(1.05);
+}
+
+
 /* -------------------- */
 /* RESPONSIVE DESIGN */
 /* -------------------- */
@@ -173,10 +205,6 @@ body {
         flex-direction: column;
         height: auto;
         padding: 15px;
-    }
-    
-    .logo-container {
-        margin-bottom: 15px;
     }
     
     .menu-lista {
@@ -189,10 +217,6 @@ body {
     .enlace-menu {
         font-size: 16px;    
         padding: 8px 15px;
-    }
-    
-    .cabecera {
-        height: auto;
     }
     
     .contenido-principal {
