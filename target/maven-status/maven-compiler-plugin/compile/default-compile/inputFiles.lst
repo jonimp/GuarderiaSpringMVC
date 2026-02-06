@@ -1,9 +1,11 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Administrador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Configuracion.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Controlador.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorAdmin.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Empleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Inicializador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Interceptor.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Socio.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Usuario.java
-/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuariosDAO.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuarioDAO.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuarioService.java

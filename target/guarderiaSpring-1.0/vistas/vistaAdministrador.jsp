@@ -29,8 +29,8 @@
         <main class="contenido-principal-admin">
             <div class="menu-container">
                 <h2 class="titulo">SESIÓN DE ADMINISTRADOR</h2>
-                <form action="/buscar" method="get">
-                    <button type="submit">Buscar usuario</button>
+                <form action="${pageContext.request.contextPath}/admin/buscar" method="get">
+                    <button type="submit">Buscar y gestionar usuario</button>
                 </form>
                 <form action="alta" method="post">
                     <button type="submit">Registrar Usuario</button>
@@ -48,7 +48,7 @@
                     <button type="submit">Asignar empleado a garage</button>
                 </form>
                 <form action="logout" method="get">
-                    <button type="submit">Cerrar sesión</button>
+                    <button class="salir" type="submit">Cerrar sesión</button>
                 </form>
             </div>
         </main>

@@ -139,6 +139,14 @@ body {
     margin-top: 10px;
 }
 
+button:hover {
+    background-color: #d47507;
+}
+
+button.salir:hover {
+    background-color: red;
+    color: white;
+}
 /* -------------------- */
 /* RESPONSIVE DESIGN */
 /* -------------------- */

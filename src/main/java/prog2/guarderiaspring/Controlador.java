@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Controlador {
 
     @Autowired
-    private UsuariosDAO usDAO;
+    private UsuarioDAO usDAO;
 
     @GetMapping("/")
     public String mostrarInicio() {
@@ -49,20 +49,7 @@ public class Controlador {
         }
     }
 
-    @GetMapping("/admin")
-    public String vistaAdmin(HttpSession session, HttpServletResponse response) {
-
-        
-
-        Usuario u = (Usuario) session.getAttribute("usuarioLogeado");
-
-        if (u == null || !(u instanceof Administrador)) {
-            return "redirect:/";
-        }
-
-        return "vistaAdministrador";
-    }
-
+   
     @GetMapping("/empleado")
     public String vistaEmpleado(HttpSession session, HttpServletResponse response) {
 
@@ -95,12 +82,6 @@ public class Controlador {
     public String logout(HttpSession session) {
         session.invalidate();   // destruye la sesión
         return "redirect:/";
-    }
-
-  
-    @GetMapping("/buscar")
-    public String mostrarBusqueda() {
-        return "buscarUsuario";
     }
 
     @ModelAttribute

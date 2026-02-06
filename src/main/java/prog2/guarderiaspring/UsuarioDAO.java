@@ -5,19 +5,21 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UsuariosDAO {
+public class UsuarioDAO {
     
     private final String dbFullURL;
     private final String dbUser;
     private final String dbPswd;
         
     @Autowired
-    public UsuariosDAO(
+    public UsuarioDAO(
             @Qualifier("dbName") String dbName,
             @Qualifier("dbURL") String dbURL,
             @Qualifier("dbUser") String dbUser,
@@ -74,6 +76,62 @@ public class UsuariosDAO {
             return null;
         }
     }
+/*----------------------------------------------------------------------------*/
+     
+/*----------------------------------------------------------------------------*/
+public List<Usuario> buscar(String tipo, String nombre) {
+
+    List<Usuario> lista = new ArrayList<>();
+
+    String sql = """
+        SELECT usuario, nombre, 'administrador' AS tipo
+        FROM administradores
+        UNION ALL
+        SELECT usuario, nombre, 'empleado' AS tipo
+        FROM empleados
+        UNION ALL
+        SELECT usuario, nombre, 'socio' AS tipo
+        FROM socios
+    """;
+
+    try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
+         PreparedStatement pstmt = con.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+
+        while (rs.next()) {
+
+            String user = rs.getString("usuario");
+            String nom = rs.getString("nombre");
+            String t = rs.getString("tipo");
+
+            // filtro por tipo
+            if (tipo != null && !tipo.isEmpty() && !t.equalsIgnoreCase(tipo)) {
+                continue;
+            }
+
+            // filtro por nombre
+            if (nombre != null && !nombre.isEmpty() &&
+                !nom.toLowerCase().contains(nombre.toLowerCase())) {
+                continue;
+            }
+
+            Usuario u;
+
+            switch (t) {
+                case "administrador" -> u = buscarAdministrador(user);
+                case "empleado" -> u = buscarEmpleado(user);
+                default -> u = buscarSocio(user);
+            }
+
+            lista.add(u);
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Error al buscar usuarios: " + e.getMessage());
+    }
+
+    return lista;
+}
 /*----------------------------------------------------------------------------*/
      
 /*----------------------------------------------------------------------------*/     

@@ -37,7 +37,7 @@
                 <button type="submit">Consultar vehiculos a cargo</button>
             </form>
             <form action="logout" method="get">
-                <button type="submit">Cerrar sesion</button>
+                <button class="salir" type="submit">Cerrar sesion</button>
             </form>
         </div>
     </main>
