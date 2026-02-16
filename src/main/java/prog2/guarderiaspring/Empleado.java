@@ -4,7 +4,7 @@ public class Empleado extends Usuario {
     
     private String codigo, nombre, direccion, telefono, especialidad;
     
-    public Empleado(String u, String p, String codigo, String nombre, String telefono, String direccion, String especialidad){
+    public Empleado(String u, String p, String codigo, String nombre, String direccion, String telefono, String especialidad){
         setUsuario(u);
         setPassword(p);
         this.codigo = codigo;

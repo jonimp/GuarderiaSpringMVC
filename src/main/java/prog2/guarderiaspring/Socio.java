@@ -3,32 +3,31 @@ package prog2.guarderiaspring;
 import java.time.LocalDateTime;
 
 public class Socio extends Usuario {
-    
-    private String DNI, nombre, direccion, telefono;
+
+    private String dni, nombre, direccion, telefono;
     private LocalDateTime fechaAlta;
-        
-    public Socio(String u, String p, String DNI, String nombre, String telefono, String direccion){
+
+    public Socio(String u, String p, String dni, String nombre, String telefono, String direccion) {
         setUsuario(u);
         setPassword(p);
-        this.DNI = DNI;
+        this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.direccion = direccion;     
+        this.direccion = direccion;
         this.fechaAlta = LocalDateTime.now();
     }
 
     @Override
-public String getTipo() {
-    return "socio";
-}
-
-    
-    public String getDNI() {
-        return DNI;
+    public String getTipo() {
+        return "socio";
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -62,5 +61,5 @@ public String getTipo() {
     public void setFechaAlta(LocalDateTime fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
- 
+
 }

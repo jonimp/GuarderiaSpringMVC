@@ -68,6 +68,16 @@
 
                         <div class="dato-linea">
                             <div class="dato-header">
+                                <i class="fa-solid fa-hashtag"></i>
+                                <span class="dato-label">Codigo:</span>
+                            </div>
+                            <div class="dato-content">
+                                ${usuario.codigo}
+                            </div>
+                        </div>
+                            
+                        <div class="dato-linea">
+                            <div class="dato-header">
                                 <i class="fas fa-id-card"></i>
                                 <span class="dato-label">Nombre:</span>
                             </div>
@@ -96,12 +106,21 @@
                             </div>
                         </div>
 
+                        <div class="dato-linea">
+                            <div class="dato-header">
+                                <i class="fa-solid fa-hand"></i>
+                                <span class="dato-label">Especialidad:</span>
+                            </div>
+                            <div class="dato-content">
+                                ${usuario.especialidad}
+                            </div>
+                        </div>    
                     </c:when>
 
 
                     <%-- SOCIO --%>
                     <c:when test="${usuario.tipo == 'socio'}">
-
+                        
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-id-card"></i>
@@ -112,6 +131,16 @@
                             </div>
                         </div>
 
+                        <div class="dato-linea">
+                            <div class="dato-header">
+                                <i class="fa-solid fa-hashtag"></i>
+                                <span class="dato-label">DNI:</span>
+                            </div>
+                            <div class="dato-content">
+                                ${usuario.dni}
+                            </div>
+                        </div>    
+                            
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-home"></i>
@@ -130,7 +159,7 @@
                             <div class="dato-content">
                                 ${usuario.telefono}
                             </div>
-                        </div>
+                        </div> 
 
                     </c:when>
 
