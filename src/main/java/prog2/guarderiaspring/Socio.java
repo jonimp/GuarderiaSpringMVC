@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Socio extends Usuario {
     
     private String DNI, nombre, direccion, telefono;
-    private final String nivelAcceso = "socio";
     private LocalDateTime fechaAlta;
         
     public Socio(String u, String p, String DNI, String nombre, String telefono, String direccion){
@@ -19,9 +18,10 @@ public class Socio extends Usuario {
     }
 
     @Override
-    public String getNivelAcceso(){
-        return nivelAcceso;
-    }
+public String getTipo() {
+    return "socio";
+}
+
     
     public String getDNI() {
         return DNI;

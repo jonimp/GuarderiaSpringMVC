@@ -21,8 +21,8 @@ public abstract class Usuario {
         this.password = password;
     }
     
-    public abstract String getNivelAcceso();
+    public abstract String getTipo();
 
-  
+    
     
 }

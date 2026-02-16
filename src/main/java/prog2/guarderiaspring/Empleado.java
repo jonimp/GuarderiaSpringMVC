@@ -3,7 +3,6 @@ package prog2.guarderiaspring;
 public class Empleado extends Usuario {
     
     private String codigo, nombre, direccion, telefono, especialidad;
-    private final String nivelAcceso = "empleado";
     
     public Empleado(String u, String p, String codigo, String nombre, String telefono, String direccion, String especialidad){
         setUsuario(u);
@@ -15,10 +14,13 @@ public class Empleado extends Usuario {
         this.especialidad = especialidad;
     }
     
+    
+    
     @Override
-    public String getNivelAcceso(){
-        return nivelAcceso;
+    public String getTipo() {
+      return "empleado";
     }
+
     
     public String getCodigo() {
         return codigo;

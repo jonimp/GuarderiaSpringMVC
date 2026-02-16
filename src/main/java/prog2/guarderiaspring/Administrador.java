@@ -1,18 +1,26 @@
 package prog2.guarderiaspring;
 
 public class Administrador extends Usuario {
-    
-    private final String nivelAcceso = "administrador";
-    
-    public Administrador(String u, String p){
+
+    private String nombre;
+
+    public Administrador(String u, String p, String nombre) {
         setUsuario(u);
-        setPassword(p);     
+        setPassword(p);
+        this.nombre = nombre;
     }
-   
+
     @Override
-    public String getNivelAcceso(){
-        return nivelAcceso;
+    public String getTipo() {
+        return "administrador";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }
-    

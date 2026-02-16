@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/estiloGestionUsuario.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloGestionUsuario.css">
         <title>gestion usuarios</title>
     </head>
     <body>
@@ -14,7 +14,7 @@
             <div class="contendor-cabecera">
                 <nav>
                     <div class="lista-menu">
-                        <a href="#" class="enlace-menu">Inicio</a>
+                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
                         <a href="#" class="enlace-menu">Servicios</a>
                         <a href="#" class="enlace-menu">Galería</a>
                         <a href="#" class="enlace-menu">Contacto</a>
@@ -30,12 +30,22 @@
 
                 <form action="${pageContext.request.contextPath}/admin/buscar" method="get">
                     <div class="filtros-por-tipo">
-                        <select name="tipoUsuario" id="tipoUsuario">
+                        <select name="tipoUsuario" id="tipoUsuario" onchange="this.form.submit();">
                             <option value="">Todos los tipos</option>
-                            <option value="administrador">Administrador</option>
-                            <option value="empleado">Empleado</option>
-                            <option value="socio">Socio</option>
-                        </select> 
+                            <option value="administrador"
+                                    ${param.tipoUsuario == 'administrador' ? 'selected' : ''}>
+                                Administrador
+                            </option>
+                            <option value="empleado"
+                                    ${param.tipoUsuario == 'empleado' ? 'selected' : ''}>
+                                Empleado
+                            </option>
+                            <option value="socio"
+                                    ${param.tipoUsuario == 'socio' ? 'selected' : ''}>
+                                Socio
+                            </option>
+                        </select>
+
 
                         <input type="text"
                                name="nombre" 
@@ -45,11 +55,11 @@
                         <button type="submit" class="boton-busqueda">Buscar</button>
                     </div>
                 </form>
-                    
+
                 <c:if test="${empty usuarios}">
                     <p>No se encontraron usuarios.</p>
                 </c:if>
-    
+
                 <!-- Tabla de resultados -->
                 <table class="tabla-resultados">
                     <thead>
@@ -63,12 +73,12 @@
                     <tbody>
                         <c:forEach var="u" items="${usuarios}">
                             <tr>
-                                <td>${u.username}</td>
+                                <td>${u.usuario}</td>
                                 <td>${u.nombre}</td>
                                 <td>${u.tipo}</td>
                                 <td>
-                                    <button class="boton-acciones" href="ver?user=${u.username}">Ver</button>
-                                    <button class="boton-acciones" href="editar?user=${u.username}">Editar</button>
+                                    <a class="boton" href="${pageContext.request.contextPath}/admin/ver/${u.usuario}">Ver</a>
+                                    <a class="boton" href="editar?user=${u.usuario}">Editar</a>
                                 </td>
                             </tr>
                         </c:forEach>

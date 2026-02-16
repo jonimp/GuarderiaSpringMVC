@@ -17,7 +17,7 @@
 
             <nav>
                 <div class="lista-menu">
-                    <a href="#" class="enlace-menu">Inicio</a>
+                    <a href="${pageContect.request.contextPath}/" class="enlace-menu">Inicio</a>
                     <a href="#" class="enlace-menu">Servicios</a>
                     <a href="#" class="enlace-menu">Galería</a>
                     <a href="#" class="enlace-menu">Contacto</a>

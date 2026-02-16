@@ -1,6 +1,5 @@
 package prog2.guarderiaspring;
 
-import prog2.guarderiaspring.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -9,9 +8,14 @@ import java.util.List;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioDAO usuarioDAO;
+    private UsuarioDAO usuariosDAO;
 
-    public List<Usuario> buscar(String tipo, String nombre) {
-        return usuarioDAO.buscar(tipo, nombre);
+    public List<UsuarioListado> buscar(String tipoUsuario, String nombre) {
+        return usuariosDAO.buscarListado(tipoUsuario, nombre);
     }
+
+    public Usuario buscarPorUsuario(String usuario) {
+        return usuariosDAO.buscarPorUsuario(usuario);
+    }
+
 }

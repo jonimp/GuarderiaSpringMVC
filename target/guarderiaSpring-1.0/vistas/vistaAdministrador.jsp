@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 
                 <nav>
                     <div class="lista-menu">
-                        <a href="#" class="enlace-menu">Inicio</a>
+                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
                         <a href="#" class="enlace-menu">Servicios</a>
                         <a href="#" class="enlace-menu">Galería</a>
                         <a href="#" class="enlace-menu">Contacto</a>
