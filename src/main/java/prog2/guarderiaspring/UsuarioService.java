@@ -1,5 +1,6 @@
 package prog2.guarderiaspring;
 
+import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,4 +19,15 @@ public class UsuarioService {
         return usuariosDAO.buscarPorUsuario(usuario);
     }
 
+    public void actualizar(Usuario u) throws SQLException {
+        usuariosDAO.actualizar(u);
+    }
+    
+    public void eliminar(Usuario u) throws SQLException {
+        usuariosDAO.eliminar(u);
+    }
+
+    public void guardar(Usuario u) throws SQLException {
+        usuariosDAO.guardar(u);
+    }
 }

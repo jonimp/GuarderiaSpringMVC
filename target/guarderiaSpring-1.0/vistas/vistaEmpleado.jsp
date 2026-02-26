@@ -30,8 +30,8 @@
     <main class="contenido-principal-empl">
         <div class="menu-container">
             <h2 class="titulo">SESIÓN DE EMPLEADO</h2>
-            <form action="/buscar" method="get">
-                <button type="submit">Consultar datos personales</button>
+            <form action="${pageContext.request.contextPath}/consultarDatos" method="get">
+                <button type="submit">Consultar datos personales</button>                
             </form>
             <form action="alta" method="post">
                 <button type="submit">Consultar vehiculos a cargo</button>

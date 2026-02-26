@@ -28,7 +28,8 @@
             <div class="menu-container">
                 <h2>Búsqueda de Usuarios</h2>
 
-                <form action="${pageContext.request.contextPath}/admin/buscar" method="get">
+                <form action="${pageContext.request.contextPath}/admin/buscar?modo=${modo}" method="get">
+                    <input type="hidden" name="modo" value="${modo}">
                     <div class="filtros-por-tipo">
                         <select name="tipoUsuario" id="tipoUsuario" onchange="this.form.submit();">
                             <option value="">Todos los tipos</option>
@@ -62,6 +63,9 @@
 
                 <!-- Tabla de resultados -->
                 <table class="tabla-resultados">
+
+
+
                     <thead>
                         <tr>
                             <th>Usuario</th>
@@ -78,7 +82,15 @@
                                 <td>${u.tipo}</td>
                                 <td>
                                     <a class="boton" href="${pageContext.request.contextPath}/admin/ver/${u.usuario}">Ver</a>
-                                    <a class="boton" href="editar?user=${u.usuario}">Editar</a>
+                                    <a class="boton" href="${pageContext.request.contextPath}/admin/editar/${u.usuario}">Editar</a> 
+                                    <form action="${pageContext.request.contextPath}/admin/eliminar/${u.usuario}" 
+                                          method="post" 
+                                          style="display:inline;"
+                                          onsubmit="return confirm('¿Seguro que deseas eliminar este usuario?');">
+
+                                        <button type="submit" class="boton">Eliminar</button>
+
+                                    </form>
                                 </td>
                             </tr>
                         </c:forEach>

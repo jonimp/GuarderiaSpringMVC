@@ -7,16 +7,18 @@ public class Socio extends Usuario {
     private String dni, nombre, direccion, telefono;
     private LocalDateTime fechaAlta;
 
-    public Socio(String u, String p, String dni, String nombre, String telefono, String direccion) {
+    public Socio(String u, String p, String nombre, String dni, String telefono, String direccion) {
         setUsuario(u);
         setPassword(p);
-        this.dni = dni;
         this.nombre = nombre;
+        this.dni = dni;
         this.telefono = telefono;
         this.direccion = direccion;
         this.fechaAlta = LocalDateTime.now();
     }
 
+    public Socio(){};
+    
     @Override
     public String getTipo() {
         return "socio";

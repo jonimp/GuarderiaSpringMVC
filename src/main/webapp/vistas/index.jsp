@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/estiloIndex.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloIndex.css">
         <link rel="shortcut icon" type="image/x-icon" href="/imagenes/favicon.ico">
         <title>Guardería Spring Web MVC</title>
     </head>

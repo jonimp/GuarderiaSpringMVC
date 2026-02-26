@@ -138,7 +138,6 @@ public class UsuarioDAO {
     }
 
     /*-----------------------------------------------------------------------------*/
-
     public List<UsuarioListado> buscarPorTipo(String tipoUsuario) {
 
         List<UsuarioListado> lista = new ArrayList<>();
@@ -181,7 +180,6 @@ public class UsuarioDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return lista;
@@ -202,8 +200,8 @@ public class UsuarioDAO {
                     return new Empleado(
                             rs.getString("usuario"),
                             rs.getString("password"),
-                            rs.getString("codigo"),
                             rs.getString("nombre"),
+                            rs.getString("dni"),
                             rs.getString("direccion"),
                             rs.getString("telefono"),
                             rs.getString("especialidad")
@@ -216,7 +214,7 @@ public class UsuarioDAO {
         return null;
     }
 
- /*----------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------*/
 
  /*----------------------------------------------------------------------------*/
     public Socio buscarSocio(String usuario) {
@@ -231,8 +229,8 @@ public class UsuarioDAO {
                     return new Socio(
                             rs.getString("usuario"),
                             rs.getString("password"),
-                            rs.getString("dni"),
                             rs.getString("nombre"),
+                            rs.getString("dni"),
                             rs.getString("telefono"),
                             rs.getString("direccion")
                     );
@@ -259,7 +257,8 @@ public class UsuarioDAO {
                     return new Administrador(
                             rs.getString("usuario"),
                             rs.getString("password"),
-                            rs.getString("nombre")
+                            rs.getString("nombre"),
+                            rs.getString("dni")
                     );
                 }
             }
@@ -289,4 +288,188 @@ public class UsuarioDAO {
 
     /*----------------------------------------------------------------------------*/
  /*----------------------------------------------------------------------------*/
+    public void actualizar(Usuario u) throws SQLException {
+
+        if (u instanceof Administrador administrador) {
+            actualizarAdministrador(administrador);
+        } else if (u instanceof Empleado empleado) {
+            actualizarEmpleado(empleado);
+        } else if (u instanceof Socio socio) {
+            actualizarSocio(socio);
+        }
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void actualizarAdministrador(Administrador a) throws SQLException {
+
+        String sql = "UPDATE administradores SET usuario=?, password=?, nombre=? WHERE dni=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, a.getUsuario());
+            pstmt.setString(2, a.getPassword());
+            pstmt.setString(3, a.getNombre());
+            pstmt.setString(4, a.getDni());
+
+            pstmt.executeUpdate();
+        }
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void actualizarEmpleado(Empleado e) throws SQLException {
+
+        String sql = "UPDATE empleados SET usuario=?, password=?, nombre=?, direccion=?, telefono=?, especialidad=? WHERE dni=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, e.getUsuario());
+            pstmt.setString(2, e.getPassword());
+            pstmt.setString(3, e.getNombre());
+            pstmt.setString(4, e.getDireccion());
+            pstmt.setString(5, e.getTelefono());
+            pstmt.setString(6, e.getEspecialidad());
+            pstmt.setString(7, e.getDni());
+
+            pstmt.executeUpdate();
+        }
+
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void actualizarSocio(Socio s) throws SQLException {
+
+        String sql = "UPDATE socios SET usuario=?, password=?, nombre=?, direccion=?, telefono=? WHERE dni=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, s.getUsuario());
+            pstmt.setString(2, s.getPassword());
+            pstmt.setString(3, s.getNombre());
+            pstmt.setString(4, s.getDireccion());
+            pstmt.setString(5, s.getTelefono());
+            pstmt.setString(6, s.getDni());
+
+            int filas = pstmt.executeUpdate();
+            System.out.println("Filas actualizadas: " + filas);
+        }
+
+    }
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    public void eliminar(Usuario u) throws SQLException {
+
+        if (u instanceof Administrador administrador) {
+            eliminarAdministrador(administrador);
+        } else if (u instanceof Empleado empleado) {
+            eliminarEmpleado(empleado);
+        } else if (u instanceof Socio socio) {
+            eliminarSocio(socio);
+        }
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void eliminarAdministrador(Administrador a) throws SQLException {
+
+        String sql = "DELETE FROM administradores WHERE usuario=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, a.getUsuario());
+            pstmt.executeUpdate();
+        }
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void eliminarEmpleado(Empleado e) throws SQLException {
+
+        String sql = "DELETE FROM empleados WHERE usuario=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+            
+            pstmt.setString(1, e.getUsuario());
+            pstmt.executeUpdate();
+        }
+
+    }
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
+    private void eliminarSocio(Socio s) throws SQLException {
+
+        String sql = "DELETE FROM socios WHERE usuario=?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+            
+            pstmt.setString(1, s.getUsuario());
+            pstmt.executeUpdate();
+        }
+
+    }
+  /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/  
+    public void guardar(Usuario u) throws SQLException {
+        
+        if (u instanceof Administrador administrador) {
+            guardarAdministrador(administrador);
+        } else if (u instanceof Empleado empleado) {
+            guardarEmpleado(empleado);
+        } else if (u instanceof Socio socio) {
+            guardarSocio(socio);
+        }
+    }
+
+    private void guardarAdministrador(Administrador a) throws SQLException{
+        String sql = "INSERT INTO administradores (usuario, password, nombre, dni, acceso) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, a.getUsuario());
+            pstmt.setString(2, a.getPassword());
+            pstmt.setString(3, a.getNombre());
+            pstmt.setString(4, a.getDni());
+            pstmt.setString(5, a.getTipo());
+            
+            pstmt.executeUpdate();
+        }
+    }
+    
+    private void guardarEmpleado(Empleado e) throws SQLException{
+        String sql = "INSERT INTO empleados (usuario, password, nombre, dni, direccion, telefono, especialidad, acceso) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, e.getUsuario());
+            pstmt.setString(2, e.getPassword());
+            pstmt.setString(3, e.getNombre());
+            pstmt.setString(4, e.getDni());
+            pstmt.setString(5, e.getDireccion());
+            pstmt.setString(6, e.getTelefono());
+            pstmt.setString(7, e.getEspecialidad());
+            pstmt.setString(8, e.getTipo());
+            
+            pstmt.executeUpdate();
+        }
+    }
+    
+    private void guardarSocio(Socio s) throws SQLException{
+        String sql = "INSERT INTO socios (usuario, password, nombre, dni, direccion, telefono, acceso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setString(1, s.getUsuario());
+            pstmt.setString(2, s.getPassword());
+            pstmt.setString(3, s.getNombre());
+            pstmt.setString(4, s.getDni());
+            pstmt.setString(5, s.getDireccion());
+            pstmt.setString(6, s.getTelefono());
+            pstmt.setString(7, s.getTipo());
+            
+            pstmt.executeUpdate();
+        }
+    }
 }

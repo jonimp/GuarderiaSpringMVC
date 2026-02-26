@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eee9ce;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banda-superior {
+    min-height: 80px; 
+    background-color: #eee9ce; 
+    display: flex;
+    align-items: center; 
+}
+
+.contendor-cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el menú */
+}
+
+.menu-principal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+}
+
+.lista-menu {
+    display: flex;
+    gap: 70px;
+}
+
+.enlace-menu {
+    color: #d12525;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enlace-menu::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #a31300;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.enlace-menu:hover::after {
+    width: 80%;
+}
+
+.contenido-principal {
+    height: calc(100vh - 80px);
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    color: #444;
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.dato-linea {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 2px solid #e1e5ee;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.dato-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #444;
+    min-width: 120px;
+}
+
+.dato-header i {
+    color: #444;
+    width: 20px;
+}
+
+.dato-content {
+    flex-grow: 1;
+    color: #333;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Estilos para los campos de entrada en edición */
+.dato-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: white;
+    transition: border-color 0.3s ease;
+}
+
+.dato-input:focus {
+    outline: none;
+    border-color: #d3852b;
+    box-shadow: 0 0 0 2px rgba(211, 133, 43, 0.2);
+}
+
+/* Botones de edición (Aceptar / Cancelar) */
+.botones-edicion {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton-aceptar,
+.boton-cancelar {
+    display: inline-block;
+    background-color: #d3852b;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.boton-aceptar {
+    background-color: #2b8c3e; /* Verde */
+}
+
+.boton-aceptar:hover {
+    background-color: #1e6b2c;
+}
+
+.boton-cancelar {
+    background-color: #a13d3d; /* Rojo oscuro */
+}
+
+.boton-cancelar:hover {
+    background-color: #7a2e2e;
+}
+
+/* Mantenemos el estilo del botón Volver por si se necesita en otra vista */
+.boton-retroceso {
+    display: flex;
+    background-color: #d3852b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;    
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    justify-content: center;
+}

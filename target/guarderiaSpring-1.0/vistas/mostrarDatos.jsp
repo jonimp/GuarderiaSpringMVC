@@ -40,7 +40,7 @@
 
                     <%-- ADMIN --%>
                     <c:when test="${usuario.tipo == 'administrador'}">
-                        
+
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-id-card"></i>
@@ -50,7 +50,7 @@
                                 ${usuario.nombre}
                             </div>
                         </div>
-                            
+
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-user-shield"></i>
@@ -65,17 +65,7 @@
 
                     <%-- EMPLEADO --%>
                     <c:when test="${usuario.tipo == 'empleado'}">
-
-                        <div class="dato-linea">
-                            <div class="dato-header">
-                                <i class="fa-solid fa-hashtag"></i>
-                                <span class="dato-label">Codigo:</span>
-                            </div>
-                            <div class="dato-content">
-                                ${usuario.codigo}
-                            </div>
-                        </div>
-                            
+                        
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-id-card"></i>
@@ -83,6 +73,16 @@
                             </div>
                             <div class="dato-content">
                                 ${usuario.nombre}
+                            </div>
+                        </div>
+                            
+                        <div class="dato-linea">
+                            <div class="dato-header">
+                                <i class="fa-solid fa-hashtag"></i>
+                                <span class="dato-label">D.N.I:</span>
+                            </div>
+                            <div class="dato-content">
+                                ${usuario.dni}
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
 
                     <%-- SOCIO --%>
                     <c:when test="${usuario.tipo == 'socio'}">
-                        
+
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-id-card"></i>
@@ -134,13 +134,13 @@
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fa-solid fa-hashtag"></i>
-                                <span class="dato-label">DNI:</span>
+                                <span class="dato-label">D.N.I:</span>
                             </div>
                             <div class="dato-content">
                                 ${usuario.dni}
                             </div>
                         </div>    
-                            
+
                         <div class="dato-linea">
                             <div class="dato-header">
                                 <i class="fas fa-home"></i>
@@ -166,7 +166,7 @@
                 </c:choose>
 
                 <div>
-                    <a href="${pageContext.request.contextPath}/admin/buscar" class="boton-retroceso">Volver</a>
+                    <a href="${pageContext.request.contextPath}/panel" class="boton-retroceso">Volver</a>
                 </div>
             </div>
         </main>

@@ -30,7 +30,7 @@
     <main class="contenido-principal-soc">
         <div class="menu-container">
             <h2 class="titulo">SESIÓN DE SOCIO</h2>
-            <form action="/buscar" method="get">
+            <form action="${pageContext.request.contextPath}/consultarDatos" method="get">
                 <button type="submit">Consultar datos personales</button>
             </form>
             <form action="alta" method="post">

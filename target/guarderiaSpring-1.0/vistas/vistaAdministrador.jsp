@@ -5,15 +5,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/estiloUsuarios.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloUsuarios.css">
         <title>Menú Administrador</title>
     </head>
     <body>
 
         <header class="banda-superior">
             <div class="contendor-cabecera">
-
-
                 <nav>
                     <div class="lista-menu">
                         <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
@@ -22,7 +20,6 @@
                         <a href="#" class="enlace-menu">Contacto</a>
                     </div>
                 </nav>
-
             </div>    
         </header>
 
@@ -32,11 +29,8 @@
                 <form action="${pageContext.request.contextPath}/admin/buscar" method="get">
                     <button type="submit">Buscar y gestionar usuario</button>
                 </form>
-                <form action="alta" method="post">
+                <form action="${pageContext.request.contextPath}/admin/registrar" method="get">
                     <button type="submit">Registrar Usuario</button>
-                </form>
-                <form action="baja" method="post">
-                    <button type="submit">Eliminar Usuario</button>
                 </form>
                 <form action="garageDisponible" method="get">
                     <button type="submit">Ver disponibilidad garages</button>

@@ -49,11 +49,8 @@ public class Controlador {
         }
     }
 
-   
     @GetMapping("/empleado")
     public String vistaEmpleado(HttpSession session, HttpServletResponse response) {
-
-     
 
         Usuario u = (Usuario) session.getAttribute("usuarioLogeado");
 
@@ -66,8 +63,6 @@ public class Controlador {
 
     @GetMapping("/socio")
     public String vistaSocio(HttpSession session, HttpServletResponse response) {
-
-       
 
         Usuario u = (Usuario) session.getAttribute("usuarioLogeado");
 
@@ -89,6 +84,44 @@ public class Controlador {
         response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
+    }
+
+    @GetMapping("/consultarDatos")
+    public String consultarDatos(HttpSession session, Model model) {
+
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogeado");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+
+        return "mostrarDatos";
+    }
+
+    @GetMapping("/panel")
+    public String volverPanel(HttpSession session) {
+
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogeado");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        if (usuario instanceof Administrador) {
+            return "buscarYgestionarUsuario";
+        }
+
+        if (usuario instanceof Empleado) {
+            return "vistaEmpleado";
+        }
+
+        if (usuario instanceof Socio) {
+            return "vistaSocio";
+        }
+
+        return "redirect:/";
     }
 
 }
