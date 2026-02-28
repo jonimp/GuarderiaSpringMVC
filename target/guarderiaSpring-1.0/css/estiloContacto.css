@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eee9ce;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.banda-superior {
+    min-height: 80px;
+    background-color: #eee9ce;
+    display: flex;
+    align-items: center;
+}
+
+.contendor-cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-principal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.lista-menu {
+    display: flex;
+    gap: 70px;
+}
+
+.enlace-menu {
+    color: #d12525;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enlace-menu::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #a31300;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.enlace-menu:hover::after {
+    width: 80%;
+}
+
+.contenido-principal {
+    height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
+    flex-direction: column;
+}
+
+.contact-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.titulo {
+    color: #444;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+h2 {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 15px;
+    border: 2px solid #e1e5ee;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #d12525;
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button {
+    background-color: #d3852b;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #b56f1f;
+}

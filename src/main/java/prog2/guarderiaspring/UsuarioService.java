@@ -30,4 +30,8 @@ public class UsuarioService {
     public void guardar(Usuario u) throws SQLException {
         usuariosDAO.guardar(u);
     }
+    
+    public List<Socio> obtenerSocios() {
+        return usuariosDAO.obtenerSocios();
+    }
 }

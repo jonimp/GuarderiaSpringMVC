@@ -472,4 +472,40 @@ public class UsuarioDAO {
             pstmt.executeUpdate();
         }
     }
+    
+    
+    public List<Socio> obtenerSocios() {
+
+        List<Socio> lista = new ArrayList<>();
+        String sql = "SELECT * FROM socios";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+
+                Socio s = new Socio(
+                        rs.getString("usuario"),
+                        rs.getString("password"),
+                        rs.getString("nombre"),
+                        rs.getString("dni"),
+                        rs.getString("telefono"),
+                        rs.getString("direccion")
+                );
+
+                lista.add(s);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al obtener socios: " + e.getMessage());
+        }
+
+        return lista;
+    }
+    
+    
+    
+    
+    
+    
+    
 }

@@ -32,8 +32,8 @@
                 <form action="${pageContext.request.contextPath}/admin/registrar" method="get">
                     <button type="submit">Registrar Usuario</button>
                 </form>
-                <form action="garageDisponible" method="get">
-                    <button type="submit">Ver disponibilidad garages</button>
+                <form action="${pageContext.request.contextPath}/admin/registrarVehiculo" method="get">
+                    <button type="submit">Registrar vehiculo</button>
                 </form>
                 <form action="gestionVehiculo" method="get">
                     <button type="submit">Gestionar vehiculos y garages</button>

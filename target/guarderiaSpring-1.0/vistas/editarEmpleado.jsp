@@ -59,6 +59,7 @@
                         </div>
                     </div>
                     
+                    <!-- DNI -->
                     <input type="hidden" name="dni" value="${usuario.dni}">    
                         
                     <div class="dato-linea">

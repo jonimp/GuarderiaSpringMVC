@@ -2,11 +2,17 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Configuracion.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Controlador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorAdmin.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorVehiculo.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Empleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Inicializador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Interceptor.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Socio.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/SocioService.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/TipoVehiculo.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Usuario.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuarioDAO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuarioListado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/UsuarioService.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Vehiculo.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/VehiculoDAO.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/VehiculoService.java
