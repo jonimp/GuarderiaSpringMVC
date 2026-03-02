@@ -1,7 +1,9 @@
 prog2/guarderiaspring/Empleado.class
+prog2/guarderiaspring/EspacioGarage.class
 prog2/guarderiaspring/Configuracion.class
 prog2/guarderiaspring/UsuarioListado.class
 prog2/guarderiaspring/Vehiculo.class
+prog2/guarderiaspring/EstadoZona.class
 prog2/guarderiaspring/UsuarioDAO.class
 prog2/guarderiaspring/VehiculoDAO.class
 prog2/guarderiaspring/TipoVehiculo.class
@@ -11,6 +13,7 @@ prog2/guarderiaspring/ControladorAdmin.class
 prog2/guarderiaspring/Interceptor.class
 prog2/guarderiaspring/Socio.class
 prog2/guarderiaspring/SocioService.class
+prog2/guarderiaspring/GarageDAO.class
 prog2/guarderiaspring/Inicializador.class
 prog2/guarderiaspring/UsuarioService.class
 prog2/guarderiaspring/VehiculoService.class

@@ -11,6 +11,8 @@ public class Vehiculo {
         this.nombre = nombre;
         this.tipoVehiculo = tipoVehiculo;
     }
+    
+    public Vehiculo (){}
 
     public String getMatricula() {
         return matricula;

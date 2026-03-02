@@ -18,7 +18,7 @@
                         <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
                         <a href="#" class="enlace-menu">Servicios</a>
                         <a href="#" class="enlace-menu">Galería</a>
-                        <a href="#" class="enlace-menu">Contacto</a>
+                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
                     </div>
                 </nav>          
             </div>    

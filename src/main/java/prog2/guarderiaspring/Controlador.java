@@ -124,4 +124,9 @@ public class Controlador {
         return "redirect:/";
     }
 
+    @GetMapping("/contacto")
+    public String mostrarContacto() {
+        return "contacto";
+    }
+
 }

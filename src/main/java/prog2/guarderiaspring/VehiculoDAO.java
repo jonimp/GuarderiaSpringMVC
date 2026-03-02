@@ -1,6 +1,8 @@
 package prog2.guarderiaspring;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -23,9 +25,6 @@ public class VehiculoDAO {
         this.dbPswd = dbPswd;
     }
 
-    // =========================
-    // INSERTAR VEHICULO
-    // =========================
     public void agregarVehiculo(Vehiculo v) throws SQLException {
 
         String sql = "INSERT INTO vehiculos (matricula, dniSocio, nombre, tipoVehiculo) VALUES (?, ?, ?, ?)";
@@ -43,17 +42,9 @@ public class VehiculoDAO {
         }
     }
 
-    
-
-}
-/*
-    // =========================
-    // OBTENER VEHICULOS DE UN SOCIO
-    // =========================
-    public List<Vehiculo> obtenerVehiculosPorSocio(String dniSocio) {
+    public List<Vehiculo> obtenerVehiculosPorDni(String dniSocio) {
 
         List<Vehiculo> lista = new ArrayList<>();
-
         String sql = "SELECT * FROM vehiculos WHERE dniSocio = ?";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = con.prepareStatement(sql)) {
@@ -80,6 +71,41 @@ public class VehiculoDAO {
 
         return lista;
     }
+
+    public Vehiculo obtenerPorMatricula(String matricula) {
+
+        String sql = "SELECT * FROM vehiculos WHERE matricula = ?";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, matricula);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                return new Vehiculo(
+                        rs.getString("matricula"),
+                        rs.getString("dniSocio"),
+                        rs.getString("nombre"),
+                        TipoVehiculo.valueOf(rs.getString("tipoVehiculo"))
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+   
+
+} //---FIN DE CLASE----
+
+/*
+    
+    
 
     // =========================
     // BUSCAR POR MATRICULA

@@ -17,7 +17,7 @@
                         <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
                         <a href="#" class="enlace-menu">Servicios</a>
                         <a href="#" class="enlace-menu">Galería</a>
-                        <a href="#" class="enlace-menu">Contacto</a>
+                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
                     </div>
                 </nav>
             </div>    
@@ -35,8 +35,8 @@
                 <form action="${pageContext.request.contextPath}/admin/registrarVehiculo" method="get">
                     <button type="submit">Registrar vehiculo</button>
                 </form>
-                <form action="gestionVehiculo" method="get">
-                    <button type="submit">Gestionar vehiculos y garages</button>
+                <form action="${pageContext.request.contextPath}/admin/gestionVehiculo" method="get">
+                    <button type="submit">Gestionar vehiculos en garages</button>
                 </form>
                 <form action="asignarAGarage" method="post">
                     <button type="submit">Asignar empleado a garage</button>

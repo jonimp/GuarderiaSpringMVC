@@ -18,10 +18,10 @@
 
                 <nav class="menu-principal">
                     <div class="lista-menu">
-                        <a href="#" class="enlace-menu">Inicio</a>
+                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
                         <a href="#" class="enlace-menu">Servicios</a>
                         <a href="#" class="enlace-menu">Galería</a>
-                        <a href="#" class="enlace-menu">Contacto</a>
+                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
                     </div>
                 </nav>
 
@@ -32,15 +32,7 @@
             <form action="${pageContext.request.contextPath}/admin/confirmarRegistro" method="post">
                 <div>
                     <h1 class="titulo">Registrar vehiculo</h1>
-
-                    <!-- DNI Socio 
-                    <div class="dato-linea">
-                        <span class="dato-label">DNI Socio:</span>
-                        <input type="text" name="dniSocio" class="dato-input" required>
-                    </div>
-                    -->
-                    
-                    
+                   
 
                     <div class="dato-sel">
                         <div class="dato-header">
@@ -65,7 +57,7 @@
                             <span class="dato-label">Matricula:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="text" name="matricula" value="UGH 908" class="dato-input">
+                            <input type="text" name="matricula" value="" class="dato-input">
                         </div>
                     </div>
 
@@ -76,7 +68,7 @@
                             <span class="dato-label">Nombre:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="text" name="nombre" value="123" class="dato-input">
+                            <input type="text" name="nombre" value="" class="dato-input">
                         </div>
                     </div>
 
