@@ -4,11 +4,10 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
     <head>
         <title>Registrar vehiculo</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/registrarVehiculo.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/registrar.css">
     </head>
 
     <body>
@@ -32,8 +31,6 @@
             <form action="${pageContext.request.contextPath}/admin/confirmarRegistro" method="post">
                 <div>
                     <h1 class="titulo">Registrar vehiculo</h1>
-                   
-
                     <div class="dato-sel">
                         <div class="dato-header">
                             <i class="fa-solid fa-circle-user"></i>    

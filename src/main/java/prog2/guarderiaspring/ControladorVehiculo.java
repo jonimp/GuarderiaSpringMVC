@@ -17,6 +17,9 @@ public class ControladorVehiculo {
 
     @Autowired
     private UsuarioService usuarioService;
+    
+    @Autowired
+    private GarageDAO garageDAO;
 
     @GetMapping("/registrarVehiculo")
     public String mostrarFormularioRegistrarVehiculo(Model model) {
@@ -50,6 +53,14 @@ public class ControladorVehiculo {
         EstadoZona estadoMotorhome = vehiculoService.calcularEstadoZona(TipoVehiculo.MOTORHOME);
         EstadoZona estadoCasaRodante = vehiculoService.calcularEstadoZona(TipoVehiculo.CASA_RODANTE);
         EstadoZona estadoTrailer = vehiculoService.calcularEstadoZona(TipoVehiculo.TRAILER);
+        
+        List<EspacioGarage> motorhomes = garageDAO.obtenerPorTipo(TipoVehiculo.MOTORHOME);
+        model.addAttribute("motorhomes", motorhomes);
+        List<EspacioGarage> casasRodantes = garageDAO.obtenerPorTipo(TipoVehiculo.CASA_RODANTE);
+        model.addAttribute("casasRodantes", casasRodantes);
+        List<EspacioGarage> trailers = garageDAO.obtenerPorTipo(TipoVehiculo.TRAILER);
+        model.addAttribute("trailers", trailers);
+
         model.addAttribute("estadoMotorhome", estadoMotorhome);
         model.addAttribute("estadoCasaRodante", estadoCasaRodante);
         model.addAttribute("estadoTrailer", estadoTrailer);
@@ -63,7 +74,6 @@ public class ControladorVehiculo {
         return "zonaGarages";
     }
 
-  
     @GetMapping("/asignarEspacio")
     public String mostrarAsignacion(
             @RequestParam("matricula") String matricula,

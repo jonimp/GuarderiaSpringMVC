@@ -97,7 +97,7 @@
                     </tbody>
 
                 </table>
-
+                    <a class="boton" href="${pageContext.request.contextPath}/admin">Volver</a>
             </div>
         </main>
     </body>

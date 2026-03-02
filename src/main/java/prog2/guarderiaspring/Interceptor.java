@@ -12,8 +12,9 @@ public class Interceptor implements HandlerInterceptor {
             HttpServletResponse response,
             Object handler) throws Exception {
 
-        String uri = request.getRequestURI();
-
+        //String uri = request.getRequestURI();
+        String uri = request.getRequestURI().substring(request.getContextPath().length());
+        
         if (uri.equals("/")
                 || uri.equals("/acceso")
                 || uri.startsWith("/css/")

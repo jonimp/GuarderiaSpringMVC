@@ -34,11 +34,13 @@
             <!-- Zona Motorhome -->
             <div class="zona-garage">
                 <h3>Zona Motorhome</h3>
+                               
                 <div class="indicador-capacidad">
                     <div class="barra-progreso" style="width: ${estadoMotorhome.porcentaje}%"></div>
                     <span class="texto-capacidad">${estadoMotorhome.ocupados}/${estadoMotorhome.total}</span>
                 </div>
                 <div class="espacios-grid">
+                    
                     <c:forEach var="espacio" items="${motorhomes}">
                         <div class="espacio ${espacio.ocupado ? 'ocupado' : 'libre'}">
                             ${espacio.numeroEspacio}
@@ -57,7 +59,7 @@
                     <span class="texto-capacidad">${estadoCasaRodante.ocupados}/${estadoCasaRodante.total}</span>
                 </div>
                 <div class="espacios-grid">
-                    <c:forEach var="espacio" items="${casaRodante}">
+                    <c:forEach var="espacio" items="${casasRodantes}">
                         <div class="espacio ${espacio.ocupado ? 'ocupado' : 'libre'}">
                             ${espacio.numeroEspacio}
                         </div>
@@ -73,7 +75,7 @@
                     <span class="texto-capacidad">${estadoTrailer.ocupados}/${estadoTrailer.total}</span>
                 </div>
                 <div class="espacios-grid">
-                    <c:forEach var="espacio" items="${trailer}">
+                    <c:forEach var="espacio" items="${trailers}">
                         <div class="espacio ${espacio.ocupado ? 'ocupado' : 'libre'}">
                             ${espacio.numeroEspacio}
                         </div>

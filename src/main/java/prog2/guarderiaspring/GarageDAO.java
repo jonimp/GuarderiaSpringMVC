@@ -38,12 +38,13 @@ public class GarageDAO {
 
         List<EspacioGarage> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM espacio_garage WHERE tipo = ?";
+        String sql = "SELECT * FROM espacios_garage WHERE tipo_zona = ?";
 
-        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
 
             pstmt.setString(1, tipo.name());
-
+            ResultSet rs = pstmt.executeQuery();
+                    
             while (rs.next()) {
                 EspacioGarage espacio = new EspacioGarage();
 

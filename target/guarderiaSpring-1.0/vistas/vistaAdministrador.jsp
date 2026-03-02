@@ -46,5 +46,18 @@
                 </form>
             </div>
         </main>
+
+
+        <script>
+            if (window.history && window.history.pushState) {
+                window.history.pushState(null, null, window.location.href);
+                window.onpopstate = function () {
+                    window.location.href = "${pageContext.request.contextPath}/";
+                };
+            }
+        </script>
+
+
+
     </body>
 </html>

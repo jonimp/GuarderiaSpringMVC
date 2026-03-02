@@ -7,6 +7,7 @@ prog2/guarderiaspring/EstadoZona.class
 prog2/guarderiaspring/UsuarioDAO.class
 prog2/guarderiaspring/VehiculoDAO.class
 prog2/guarderiaspring/TipoVehiculo.class
+prog2/guarderiaspring/FiltroCache.class
 prog2/guarderiaspring/Administrador.class
 prog2/guarderiaspring/Usuario.class
 prog2/guarderiaspring/ControladorAdmin.class

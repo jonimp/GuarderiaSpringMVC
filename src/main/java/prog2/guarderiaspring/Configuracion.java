@@ -1,5 +1,6 @@
 package prog2.guarderiaspring;
 
+import jakarta.servlet.Filter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,10 @@ public class Configuracion implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new Interceptor());
+    }
+
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new FiltroCache()};
     }
 
     @Bean

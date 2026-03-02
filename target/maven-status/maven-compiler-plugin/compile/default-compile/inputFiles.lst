@@ -6,6 +6,7 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Empleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/EspacioGarage.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/EstadoZona.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/FiltroCache.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/GarageDAO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Inicializador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Interceptor.java

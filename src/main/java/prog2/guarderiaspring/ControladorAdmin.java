@@ -24,6 +24,10 @@ public class ControladorAdmin {
     @GetMapping
     public String vistaAdmin(HttpSession session, HttpServletResponse response) {
 
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
         Usuario u = (Usuario) session.getAttribute("usuarioLogeado");
 
         if (u == null || !(u instanceof Administrador)) {
@@ -113,7 +117,7 @@ public class ControladorAdmin {
 
         if (u instanceof Administrador adm) {
             adm.setNombre(request.getParameter("nombre"));
-         
+
         }
 
         if (u instanceof Empleado emp) {
@@ -128,7 +132,7 @@ public class ControladorAdmin {
             socio.setTelefono(request.getParameter("telefono"));
             socio.setDireccion(request.getParameter("direccion"));
         }
-        
+
         usuarioService.actualizar(u);
 
         return "redirect:/admin/buscar";
@@ -159,44 +163,46 @@ public class ControladorAdmin {
         String password = request.getParameter("password");
         String nombre = request.getParameter("nombre");
         String dni = request.getParameter("dni");
-        
-        if (null != tipo) switch (tipo) {
-            case "administrador" -> {
-                Administrador admin = new Administrador();
-                admin.setUsuario(usuario);
-                admin.setPassword(password);
-                admin.setNombre(nombre);
-                admin.setDni(dni);
-                usuarioService.guardar(admin);
+
+        if (null != tipo) {
+            switch (tipo) {
+                case "administrador" -> {
+                    Administrador admin = new Administrador();
+                    admin.setUsuario(usuario);
+                    admin.setPassword(password);
+                    admin.setNombre(nombre);
+                    admin.setDni(dni);
+                    usuarioService.guardar(admin);
                 }
-            case "empleado" -> {
-                String direccion = request.getParameter("direccion");
-                String telefono = request.getParameter("telefono");
-                String especialidad = request.getParameter("especialidad");
-                Empleado emp = new Empleado();
-                emp.setUsuario(usuario);
-                emp.setPassword(password);
-                emp.setDni(dni);
-                emp.setNombre(nombre);
-                emp.setDireccion(direccion);
-                emp.setTelefono(telefono);
-                emp.setEspecialidad(especialidad);
-                usuarioService.guardar(emp);
+                case "empleado" -> {
+                    String direccion = request.getParameter("direccion");
+                    String telefono = request.getParameter("telefono");
+                    String especialidad = request.getParameter("especialidad");
+                    Empleado emp = new Empleado();
+                    emp.setUsuario(usuario);
+                    emp.setPassword(password);
+                    emp.setDni(dni);
+                    emp.setNombre(nombre);
+                    emp.setDireccion(direccion);
+                    emp.setTelefono(telefono);
+                    emp.setEspecialidad(especialidad);
+                    usuarioService.guardar(emp);
                 }
-            case "socio" -> {
-                String direccion = request.getParameter("direccion");
-                String telefono = request.getParameter("telefono");
-                Socio socio = new Socio();
-                socio.setUsuario(usuario);
-                socio.setPassword(password);
-                socio.setNombre(nombre);
-                socio.setDni(dni);
-                socio.setDireccion(direccion);
-                socio.setTelefono(telefono);
-                usuarioService.guardar(socio);
+                case "socio" -> {
+                    String direccion = request.getParameter("direccion");
+                    String telefono = request.getParameter("telefono");
+                    Socio socio = new Socio();
+                    socio.setUsuario(usuario);
+                    socio.setPassword(password);
+                    socio.setNombre(nombre);
+                    socio.setDni(dni);
+                    socio.setDireccion(direccion);
+                    socio.setTelefono(telefono);
+                    usuarioService.guardar(socio);
                 }
-            default -> {
-                throw new IllegalArgumentException("Tipo de usuario desconocido: " + tipo);
+                default -> {
+                    throw new IllegalArgumentException("Tipo de usuario desconocido: " + tipo);
+                }
             }
         }
 
