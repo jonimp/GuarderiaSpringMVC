@@ -1,0 +1,218 @@
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eee9ce;
+    /* Eliminado overflow:hidden y altura fija para evitar recortes */
+    min-height: 100vh;
+}
+
+/* ===== CABECERA / HEADER ===== */
+.banda-superior {
+    min-height: 80px;
+    background-color: #eee9ce;
+    display: flex;
+    align-items: center;
+}
+
+.contendor-cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-principal {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.lista-menu {
+    display: flex;
+    gap: 70px;
+}
+
+.enlace-menu {
+    color: #d12525;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enlace-menu::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #a31300;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.enlace-menu:hover::after {
+    width: 80%;
+}
+
+/* ===== CONTENIDO PRINCIPAL (LOGIN) ===== */
+.contenido-principal {
+    min-height: calc(100vh - 80px); /* Ocupa el resto de la ventana, pero permite crecer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #dfbe94 0%, #693a04 100%);
+    flex-direction: column;
+}
+
+.login-box {
+    margin-top: 50px;
+    background-color: #eee9ce;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.titulo {
+    color: #693a04;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.login-box h2 {
+    color: #8d857f;
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form input {
+    padding: 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    height: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.login-form input:focus {
+    border-color: #693a04;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.login-form button {
+    background-color: #693a04;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+/* ===== SECCIÓN DE FOTOS ===== */
+.contenedor-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;            /* Separación entre fotos */
+    margin: 100px auto;    /* Espacio superior e inferior */
+    padding: 20px;
+    max-width: 1200px;     /* Opcional: limita el ancho total */
+}
+
+.foto {
+    flex: 0 0 auto;
+    width: 350px;          /* Ancho fijo para cada foto */
+    text-align: center;    /* Centra el nombre */
+}
+
+.foto img {
+    width: 100%;
+    height: 300px;           /* Altura fija para todas las imágenes */
+    object-fit: cover;       /* Recorta la imagen para llenar el espacio sin deformar */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.nombre-foto {
+    margin-top: 8px;
+    font-family: inherit;
+    font-size: 25px;          /* Aumentado de 16px a 18px */
+    color: #333;
+    font-weight: 500;
+}
+.foto img:hover {
+    transform: scale(1.05); /* Efecto de zoom suave */
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .contenedor-cabecera {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+    
+    .enlace-menu {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    
+    .lista-menu {
+        gap: 30px;         /* Reduce espacio en móviles */
+    }
+    
+    .contenido-principal {
+        min-height: auto;   /* Se adapta al contenido */
+        padding: 40px 20px;
+    }
+    
+    .login-box {
+        margin: 10px;
+        padding: 30px 20px;
+    }
+    
+    .foto {
+        width: 100%;        /* En móvil ocupa todo el ancho disponible */
+        max-width: 450px;   /* Pero sin hacerse demasiado grande */
+    }
+}

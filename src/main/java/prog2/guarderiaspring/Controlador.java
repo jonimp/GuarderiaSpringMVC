@@ -16,11 +16,7 @@ public class Controlador {
     @Autowired
     private UsuarioDAO usDAO;
 
-    @GetMapping("/")
-    public String mostrarInicio() {
-        return "index";
-    }
-
+   
     @PostMapping("/acceso")
     public String usuarioLogeado(
             @RequestParam("usuario") String usuario,
@@ -124,9 +120,6 @@ public class Controlador {
         return "redirect:/";
     }
 
-    @GetMapping("/contacto")
-    public String mostrarContacto() {
-        return "contacto";
-    }
+    
 
 }
