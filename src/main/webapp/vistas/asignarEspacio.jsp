@@ -28,28 +28,30 @@
             </div>    
         </header>
 
-        <h1>Zonas de Garage</h1>
+        <div class="formularios-container" style="display: flex; flex-direction: column; align-items: center;">               
 
-        <h2>Confirmar Asignación</h2>
+            <h1>Zonas de Garage</h1>
 
-        <p>
-            Se guardará <strong>${vehiculo.nombre}</strong>
-            en <strong>${vehiculo.tipoVehiculo}</strong>.
-        </p>
+            <h2>Confirmar Asignación</h2>
 
-        <form action="${pageContext.request.contextPath}/admin/confirmarAsignacion" method="post">
-            <input type="hidden" name="matricula" value="${vehiculo.matricula}" />
+            <p>
+                Se guardará <strong>${vehiculo.nombre}</strong>
+                en <strong>${vehiculo.tipoVehiculo}</strong>.
+            </p>
 
-            
-            <a href="${pageContext.request.contextPath}/admin">
-                <button type="button">Cancelar</button>
-            </a>
-                
-            <button type="submit">Aceptar</button>
-            
-        </form>
+            <form action="${pageContext.request.contextPath}/admin/confirmarAsignacion" method="post">
+                <input type="hidden" name="matricula" value="${vehiculo.matricula}" />
 
 
+                <a href="${pageContext.request.contextPath}/admin">
+                    <button type="button">Cancelar</button>
+                </a>
+
+                <button type="submit">Aceptar</button>
+
+            </form>
+
+        </div>
 
 
     </body>

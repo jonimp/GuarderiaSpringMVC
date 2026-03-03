@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow: auto;  
+    background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----- HEADER (idéntico al original) ----- */
+.banda-superior {
+    min-height: 80px;
+    background-color: #e6e6e6;
+    display: flex;
+    align-items: center;
+}
+
+.contendor-cabecera {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lista-menu {
+    display: flex;
+    gap: 70px;
+}
+
+.enlace-menu {
+    color: #f18a13;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.enlace-menu::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #f18a13;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.enlace-menu:hover::after {
+    width: 80%;
+}
+
+/* ----- FORMULARIOS (centrados y con estilo) ----- */
+.formularios-container {
+    width: 100%;
+    padding: 20px;
+}
+
+form {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de cada select para centrarlo */
+.dato-content {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+/* Estilo para los selects */
+.selector {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px 12px;
+    border: 2px solid #e1e5ee;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s;
+}
+
+.selector:focus {
+    outline: none;
+    border-color: #f18a13;
+}
+
+/* Estilo para las etiquetas */
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+    margin-left: 10%;
+}
+
+/* Botones */
+button, .boton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .boton:hover {
+    background-color: #45a049;
+}
+
+/* El enlace Volver lo centramos y separamos */
+.boton {
+    margin: 10px auto 30px auto;
+    text-align: center;
+    width: fit-content;
+    padding: 10px 30px;
+}
+
+/* Títulos (si hubiera) */
+h3 {
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #333;
+}
+

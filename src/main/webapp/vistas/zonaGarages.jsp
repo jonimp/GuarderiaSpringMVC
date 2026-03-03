@@ -85,57 +85,46 @@
         </div>
 
 
-        <form method="get" action="${pageContext.request.contextPath}/admin/gestionVehiculo">
-
-            <label>Seleccionar Socio:</label>
-            <select name="dni" onchange="this.form.submit()">
+        <!-- Contenedor opcional para centrar el bloque completo -->
+<div class="formularios-container" style="display: flex; flex-direction: column; align-items: center;">
+    
+    <form method="get" action="${pageContext.request.contextPath}/admin/gestionVehiculo">
+        <label>Seleccionar Socio:</label>
+        <div class="dato-content">
+            <select class="selector" name="dni" onchange="this.form.submit()">
                 <option value="">-- Seleccionar --</option>
-
                 <c:forEach var="socio" items="${socios}">
-                    <option value="${socio.dni}"
-                            ${dniSeleccionado == socio.dni ? 'selected' : ''}>
+                    <option value="${socio.dni}" ${dniSeleccionado == socio.dni ? 'selected' : ''}>
                         ${socio.nombre} - ${socio.dni}
                     </option>
                 </c:forEach>
-
             </select>
-        </form>
+        </div>    
+    </form>
 
-
-        <c:if test="${not empty vehiculos}">
-
-            <form method="get" action="${pageContext.request.contextPath}/admin/asignarEspacio">
-
-                <input type="hidden" name="dni" value="${dniSeleccionado}">
-
-                <label>Seleccionar Vehículo:</label>
-                <select name="matricula">
+    <c:if test="${not empty vehiculos}">
+        <form method="get" action="${pageContext.request.contextPath}/admin/asignarEspacio">
+            <input type="hidden" name="dni" value="${dniSeleccionado}">
+            <label>Seleccionar Vehículo:</label>
+            <div class="dato-content">
+                <select class="selector" name="matricula">
                     <c:forEach var="vehiculo" items="${vehiculos}">
                         <option value="${vehiculo.matricula}">
                             ${vehiculo.matricula} - ${vehiculo.tipoVehiculo}
                         </option>
                     </c:forEach>
                 </select>
+            </div>
+            <button type="submit">Asignar Espacio</button>
+        </form>
+    </c:if>
 
-                <button type="submit">Asignar Espacio</button>
-
-            </form>
-
-        </c:if>
-
-
-
-        <c:if test="${not empty espaciosOcupados}">
-
-            <hr>
-
-            <h3>Liberar Vehículo del Garage</h3>
-
-            <form method="post" action="${pageContext.request.contextPath}/admin/liberarEspacio">
-
-                <label>Vehículos en Garage:</label>
-
-                <select name="matricula">
+    <c:if test="${not empty espaciosOcupados}">
+        <h3>Liberar Vehículo del Garage</h3>
+        <form method="post" action="${pageContext.request.contextPath}/admin/liberarEspacio">
+            <label>Vehículos en Garage:</label>
+            <div class="dato-content">
+                <select class="selector" name="matricula">
                     <c:forEach var="espacio" items="${espaciosOcupados}">
                         <option value="${espacio.matriculaVehiculo}">
                             ${espacio.matriculaVehiculo}
@@ -144,12 +133,12 @@
                         </option>
                     </c:forEach>
                 </select>
-
-                <button type="submit">Liberar Espacio</button>
-
-            </form>
-
-        </c:if>
+            </div>
+            <button type="submit">Liberar Espacio</button>
+        </form>
+    </c:if>
+    
+</div>
 
 
 

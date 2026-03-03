@@ -33,7 +33,7 @@
                 <form action="${pageContext.request.contextPath}/consultarDatos" method="get">
                     <button type="submit">Consultar datos personales</button>                
                 </form>
-                <form action="alta" method="post">
+                <form action="${pageContext.request.contextPath}/empleado/misEspacios" method="get">
                     <button type="submit">Consultar vehiculos a cargo</button>
                 </form>
                 <form action="logout" method="get">

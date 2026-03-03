@@ -38,7 +38,7 @@
                 <form action="${pageContext.request.contextPath}/admin/gestionVehiculo" method="get">
                     <button type="submit">Gestionar vehiculos en garages</button>
                 </form>
-                <form action="asignarAGarage" method="post">
+                <form action="${pageContext.request.contextPath}/admin/asignarEmpleado" method="get">
                     <button type="submit">Asignar empleado a garage</button>
                 </form>
                 <form action="logout" method="get">

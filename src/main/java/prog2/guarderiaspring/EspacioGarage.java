@@ -7,13 +7,15 @@ public class EspacioGarage {
     private int numeroEspacio;
     private boolean ocupado;
     private String matriculaVehiculo;
-
-    public EspacioGarage(int id, TipoVehiculo tipoZona, int numeroEspacio, boolean ocupado, String matriculaVehiculo){
+    private String empleadoAsignado;
+    
+    public EspacioGarage(int id, TipoVehiculo tipoZona, int numeroEspacio, boolean ocupado, String matriculaVehiculo, String empleadoAsignado){
         this.id = id;
         this.tipoZona = tipoZona;
         this.numeroEspacio = numeroEspacio;
         this.ocupado = ocupado;
         this.matriculaVehiculo = matriculaVehiculo;
+        this.empleadoAsignado = empleadoAsignado;
     }
     
     public EspacioGarage(){}
@@ -56,6 +58,14 @@ public class EspacioGarage {
 
     public void setMatriculaVehiculo(String matriculaVehiculo) {
         this.matriculaVehiculo = matriculaVehiculo;
+    }
+
+    public String getEmpleadoAsignado() {
+        return empleadoAsignado;
+    }
+
+    public void setEmpleadoAsignado(String empleadoAsignado) {
+        this.empleadoAsignado = empleadoAsignado;
     }
     
     

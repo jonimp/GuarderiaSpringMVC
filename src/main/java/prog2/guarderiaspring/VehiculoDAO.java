@@ -100,57 +100,22 @@ public class VehiculoDAO {
     }
 
    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 } //---FIN DE CLASE----
-
-/*
-    
-    
-
-    // =========================
-    // BUSCAR POR MATRICULA
-    // =========================
-    public Vehiculo buscarVehiculo(String matricula) {
-
-        String sql = "SELECT * FROM vehiculos WHERE matricula = ?";
-
-        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, matricula);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                return new Vehiculo(
-                        rs.getString("matricula"),
-                        rs.getString("dniSocio"),
-                        rs.getString("nombre"),
-                        TipoVehiculo.valueOf(rs.getString("tipoVehiculo"))
-                );
-            }
-
-        } catch (SQLException e) {
-        }
-
-        return null;
-    }
-
-    // =========================
-    // ELIMINAR VEHICULO
-    // =========================
-    public boolean eliminarVehiculo(String matricula) {
-
-        String sql = "DELETE FROM vehiculos WHERE matricula = ?";
-
-        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, matricula);
-
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-        }
-
-        return false;
-    }
- */

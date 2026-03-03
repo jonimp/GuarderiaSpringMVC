@@ -63,9 +63,9 @@ public class GarageDAO {
         return lista;
     }
 
-/*----------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------*/
 
-/*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
     public List<EspacioGarage> obtenerEspaciosLibresPorTipo(TipoVehiculo tipo) {
 
         List<EspacioGarage> lista = new ArrayList<>();
@@ -207,9 +207,93 @@ public class GarageDAO {
                         TipoVehiculo.valueOf(rs.getString("tipo_zona")),
                         rs.getInt("numero_espacio"),
                         rs.getBoolean("ocupado"),
-                        rs.getString("matricula_vehiculo")
+                        rs.getString("matricula_vehiculo"),
+                        rs.getString("empleado_asignado")
                 );
                 lista.add(espacio);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+    public void asignarEmpleado(int idEspacio, String dniEmpleado) {
+        String sql = "UPDATE espacios_garage SET empleado_asignado=? WHERE id=?";
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, dniEmpleado);
+            ps.setInt(2, idEspacio);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void quitarEmpleado(int idEspacio) {
+        String sql = "UPDATE espacios_garage SET empleado_asignado=NULL WHERE id=?";
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idEspacio);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public List<EspacioGarage> obtenerEspacios() {
+
+        List<EspacioGarage> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM espacios_garage";
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                EspacioGarage espacio = new EspacioGarage(
+                        rs.getInt("id"),
+                        TipoVehiculo.valueOf(rs.getString("tipo_zona")),
+                        rs.getInt("numero_espacio"),
+                        rs.getBoolean("ocupado"),
+                        rs.getString("matricula_vehiculo"),
+                        rs.getString("empleado_asignado")
+                );
+                lista.add(espacio);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+    public List<EspacioGarage> buscarEspaciosPorEmpleado(String dniEmpleado) {
+
+        List<EspacioGarage> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM espacios_garage WHERE empleado_asignado=?";
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, dniEmpleado);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                EspacioGarage e = new EspacioGarage();
+                e.setId(rs.getInt("id"));
+                e.setTipoZona(TipoVehiculo.valueOf(rs.getString("tipo_zona")));
+                lista.add(e);
             }
 
         } catch (SQLException e) {

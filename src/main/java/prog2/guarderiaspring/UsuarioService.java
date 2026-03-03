@@ -34,4 +34,8 @@ public class UsuarioService {
     public List<Socio> obtenerSocios() {
         return usuariosDAO.obtenerSocios();
     }
+    
+    public List<Empleado> obtenerEmpleados() {
+        return usuariosDAO.obtenerEmpleados();
+    }
 }

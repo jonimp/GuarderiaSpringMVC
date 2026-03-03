@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: auto; 
 }
 
 .banda-superior {
@@ -14,14 +15,7 @@ body {
     display: flex;
     align-items: center; /* Centra verticalmente el contenido */
 }
-/*
-.contendor-cabecera {
-    width: 100%;
-    display: flex;
-    justify-content: center; 
 
-}
-*/
 .lista-menu {
     display: flex;
     gap: 70px;
@@ -30,34 +24,16 @@ body {
 .contenido-principal {
     padding: 40px;
     background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
+      overflow-y: auto;  
 }
-/*
-.menu-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    height: calc(100vh - 80px);
-    background-color: #e6e6e6;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    text-align: center;
-    animation: fadeIn 0.5s ease-out;
-    justify-content: center;
-    align-items: stretch;
-    height: auto;
-    margin: 0 auto;
-    padding: 30px 20px;
-    gap: 40px;
-} */
+
 
 .menu-container {
     background-color: #e6e6e6;
     padding: 30px;
     border-radius: 12px;
     width: 100%;
+      overflow-y: auto;  
 }
 
 .filtros-por-tipo {
@@ -151,6 +127,7 @@ body {
 */
 .tabla-resultados td:last-child {
     white-space: nowrap;
+      overflow-y: auto;  
 }
 
 .tabla-resultados th,
@@ -158,11 +135,13 @@ body {
     padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+      overflow-y: auto;  
 }
 
 .tabla-resultados th {
     background-color: #f3f3f3;
     font-weight: 600;
+      overflow-y: auto;  
 }
 
 

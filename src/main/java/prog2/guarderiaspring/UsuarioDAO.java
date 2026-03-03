@@ -357,6 +357,7 @@ public class UsuarioDAO {
         }
 
     }
+
     /*----------------------------------------------------------------------------*/
  /*----------------------------------------------------------------------------*/
     public void eliminar(Usuario u) throws SQLException {
@@ -390,7 +391,7 @@ public class UsuarioDAO {
         String sql = "DELETE FROM empleados WHERE usuario=?";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
-            
+
             pstmt.setString(1, e.getUsuario());
             pstmt.executeUpdate();
         }
@@ -404,16 +405,17 @@ public class UsuarioDAO {
         String sql = "DELETE FROM socios WHERE usuario=?";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
-            
+
             pstmt.setString(1, s.getUsuario());
             pstmt.executeUpdate();
         }
 
     }
-  /*----------------------------------------------------------------------------*/
- /*----------------------------------------------------------------------------*/  
+
+    /*----------------------------------------------------------------------------*/
+ /*----------------------------------------------------------------------------*/
     public void guardar(Usuario u) throws SQLException {
-        
+
         if (u instanceof Administrador administrador) {
             guardarAdministrador(administrador);
         } else if (u instanceof Empleado empleado) {
@@ -423,7 +425,7 @@ public class UsuarioDAO {
         }
     }
 
-    private void guardarAdministrador(Administrador a) throws SQLException{
+    private void guardarAdministrador(Administrador a) throws SQLException {
         String sql = "INSERT INTO administradores (usuario, password, nombre, dni, acceso) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -433,12 +435,12 @@ public class UsuarioDAO {
             pstmt.setString(3, a.getNombre());
             pstmt.setString(4, a.getDni());
             pstmt.setString(5, a.getTipo());
-            
+
             pstmt.executeUpdate();
         }
     }
-    
-    private void guardarEmpleado(Empleado e) throws SQLException{
+
+    private void guardarEmpleado(Empleado e) throws SQLException {
         String sql = "INSERT INTO empleados (usuario, password, nombre, dni, direccion, telefono, especialidad, acceso) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -451,12 +453,12 @@ public class UsuarioDAO {
             pstmt.setString(6, e.getTelefono());
             pstmt.setString(7, e.getEspecialidad());
             pstmt.setString(8, e.getTipo());
-            
+
             pstmt.executeUpdate();
         }
     }
-    
-    private void guardarSocio(Socio s) throws SQLException{
+
+    private void guardarSocio(Socio s) throws SQLException {
         String sql = "INSERT INTO socios (usuario, password, nombre, dni, direccion, telefono, acceso) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql)) {
@@ -468,12 +470,11 @@ public class UsuarioDAO {
             pstmt.setString(5, s.getDireccion());
             pstmt.setString(6, s.getTelefono());
             pstmt.setString(7, s.getTipo());
-            
+
             pstmt.executeUpdate();
         }
     }
-    
-    
+
     public List<Socio> obtenerSocios() {
 
         List<Socio> lista = new ArrayList<>();
@@ -501,11 +502,34 @@ public class UsuarioDAO {
 
         return lista;
     }
-    
-    
-    
-    
-    
-    
-    
-}
+
+    public List<Empleado> obtenerEmpleados() {
+
+        List<Empleado> lista = new ArrayList<>();
+        String sql = "SELECT * FROM empleados";
+
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+
+                Empleado e = new Empleado(
+                        rs.getString("usuario"),
+                        rs.getString("password"),
+                        rs.getString("nombre"),
+                        rs.getString("dni"),
+                        rs.getString("telefono"),
+                        rs.getString("direccion"),
+                        rs.getString("especialidad")
+                );
+
+                lista.add(e);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al obtener empleados: " + e.getMessage());
+        }
+
+        return lista;
+    }
+
+} //FIN DE CLASE

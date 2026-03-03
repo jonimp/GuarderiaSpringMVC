@@ -2,7 +2,9 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Configuracion.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Controlador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorAdmin.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorEmpleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorEnlaces.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorSocio.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/ControladorVehiculo.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/Empleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/prog2/guarderiaspring/EspacioGarage.java

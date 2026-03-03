@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Socio extends Usuario {
 
     private String dni, nombre, direccion, telefono;
-    private LocalDateTime fechaAlta;
 
     public Socio(String u, String p, String nombre, String dni, String telefono, String direccion) {
         setUsuario(u);
@@ -14,7 +13,6 @@ public class Socio extends Usuario {
         this.dni = dni;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.fechaAlta = LocalDateTime.now();
     }
 
     public Socio(){};
@@ -56,12 +54,5 @@ public class Socio extends Usuario {
         this.telefono = telefono;
     }
 
-    public LocalDateTime getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(LocalDateTime fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
 
 }

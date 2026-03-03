@@ -100,12 +100,10 @@ public class ControladorVehiculo {
     public String zonasGarage(@RequestParam(value = "dni", required = false) String dni,
             Model model) {
 
-        // 1️⃣ Cargar estado general
         model.addAttribute("motorhomes", vehiculoService.obtenerEspaciosLibresPorTipo(TipoVehiculo.MOTORHOME));
         model.addAttribute("casaRodante", vehiculoService.obtenerEspaciosLibresPorTipo(TipoVehiculo.CASA_RODANTE));
         model.addAttribute("trailer", vehiculoService.obtenerEspaciosLibresPorTipo(TipoVehiculo.TRAILER));
 
-        // 2️⃣ Si hay DNI seleccionado
         if (dni != null && !dni.isEmpty()) {
 
             List<Vehiculo> vehiculos = vehiculoService.obtenerVehiculosPorDniSocio(dni);
@@ -157,63 +155,32 @@ public class ControladorVehiculo {
         return "redirect:/admin/gestionVehiculo";
     }
 
+    @GetMapping("/asignarEmpleado")
+    public String vistaAsignacion(Model model) {
+
+        model.addAttribute("espacios", vehiculoService.obtenerTodosLosEspacios());
+        model.addAttribute("empleados", usuarioService.obtenerEmpleados());
+
+        return "asignarEmpleado";
+    }
+
+    @PostMapping("/asignarEmpleado")
+    public String asignarEmpleado(
+            @RequestParam("idEspacio") int idEspacio,
+            @RequestParam("dniEmpleado") String dniEmpleado) {
+
+        vehiculoService.asignarEmpleado(idEspacio, dniEmpleado);
+
+        return "redirect:/admin";
+    }
+
+    @PostMapping("/desasignarEmpleado")
+    public String desasignarEmpleado(@RequestParam("idEspacio") int idEspacio) {
+
+        vehiculoService.desasignarEmpleado(idEspacio);
+
+        return "redirect:/admin/asignarEmpleado";
+    }
+
 } //FIN DE LA CLASE
 
-/*
-    
-    
-    
-    @GetMapping
-    public String listarVehiculos(HttpSession session, Model model) {
-
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-
-        if (usuario == null) {
-            return "redirect:/login";
-        }
-
-        model.addAttribute("vehiculos",
-                vehiculoService.obtenerVehiculosSocio(usuario.getDni()));
-
-        return "socio/listaVehiculos";
-    }
-
-    @GetMapping("/nuevo")
-    public String mostrarFormulario() {
-        return "socio/nuevoVehiculo";
-    }
-
-    @PostMapping("/guardar")
-    public String guardarVehiculo(
-            @RequestParam String matricula,
-            @RequestParam String nombre,
-            @RequestParam String tipoVehiculo,
-            HttpSession session
-    ) {
-
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-
-        if (usuario == null) {
-            return "redirect:/login";
-        }
-
-        vehiculoService.agregarVehiculo(
-                matricula,
-                usuario.getDni(),
-                nombre,
-                tipoVehiculo
-        );
-
-        return "redirect:/socio/vehiculos";
-    }
-
-    @GetMapping("/eliminar")
-    public String eliminarVehiculo(@RequestParam String matricula) {
-
-        vehiculoService.eliminarVehiculo(matricula);
-
-        return "redirect:/socio/vehiculos";
-    }
-
-
- */

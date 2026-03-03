@@ -80,11 +80,22 @@ public class VehiculoService {
         return garageDAO.obtenerEspaciosOcupados();
     }
 
-} //FIN DE CLASE    
-/*
+    public void asignarEmpleado(int idEspacio, String usuarioEmpleado) {
+        garageDAO.asignarEmpleado(idEspacio, usuarioEmpleado);
+    }
+
+    public void desasignarEmpleado(int idEspacio) {
+        garageDAO.quitarEmpleado(idEspacio);
+    }
+
+    public List<EspacioGarage> obtenerTodosLosEspacios() {
+        return garageDAO.obtenerEspacios();
+    }
+
+    public List<EspacioGarage> obtenerEspaciosPorEmpleado(String dniEmpleado) {
+        return garageDAO.buscarEspaciosPorEmpleado(dniEmpleado);
+    }
+    
     
 
-    public void eliminarVehiculo(String matricula) {
-        vehiculoDAO.eliminarVehiculo(matricula);
-    }
- */
+} //FIN DE CLASE    
