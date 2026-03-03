@@ -17,7 +17,7 @@ public class ControladorVehiculo {
 
     @Autowired
     private UsuarioService usuarioService;
-    
+
     @Autowired
     private GarageDAO garageDAO;
 
@@ -53,7 +53,7 @@ public class ControladorVehiculo {
         EstadoZona estadoMotorhome = vehiculoService.calcularEstadoZona(TipoVehiculo.MOTORHOME);
         EstadoZona estadoCasaRodante = vehiculoService.calcularEstadoZona(TipoVehiculo.CASA_RODANTE);
         EstadoZona estadoTrailer = vehiculoService.calcularEstadoZona(TipoVehiculo.TRAILER);
-        
+
         List<EspacioGarage> motorhomes = garageDAO.obtenerPorTipo(TipoVehiculo.MOTORHOME);
         model.addAttribute("motorhomes", motorhomes);
         List<EspacioGarage> casasRodantes = garageDAO.obtenerPorTipo(TipoVehiculo.CASA_RODANTE);
@@ -70,6 +70,9 @@ public class ControladorVehiculo {
             model.addAttribute("vehiculos", vehiculos);
             model.addAttribute("dniSeleccionado", dni);
         }
+
+        List<EspacioGarage> espaciosOcupados = vehiculoService.obtenerEspaciosOcupados();
+        model.addAttribute("espaciosOcupados", espaciosOcupados);
 
         return "zonaGarages";
     }
@@ -131,6 +134,24 @@ public class ControladorVehiculo {
             redirectAttributes.addFlashAttribute("error", "No hay espacios disponibles");
         } else {
             redirectAttributes.addFlashAttribute("mensaje", "Espacio asignado correctamente");
+        }
+
+        return "redirect:/admin/gestionVehiculo";
+    }
+
+    @PostMapping("/liberarEspacio")
+    public String liberarEspacio(
+            @RequestParam("matricula") String matricula,
+            RedirectAttributes redirectAttributes) {
+
+        boolean liberado = vehiculoService.liberarEspacio(matricula);
+
+        if (!liberado) {
+            redirectAttributes.addFlashAttribute("error",
+                    "El vehículo no tiene espacio asignado");
+        } else {
+            redirectAttributes.addFlashAttribute("mensaje",
+                    "Espacio liberado correctamente");
         }
 
         return "redirect:/admin/gestionVehiculo";

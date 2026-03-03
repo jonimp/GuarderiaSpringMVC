@@ -44,7 +44,7 @@ public class GarageDAO {
 
             pstmt.setString(1, tipo.name());
             ResultSet rs = pstmt.executeQuery();
-                    
+
             while (rs.next()) {
                 EspacioGarage espacio = new EspacioGarage();
 
@@ -116,9 +116,6 @@ public class GarageDAO {
         }
     }
 
-
-
-
     public void marcarComoOcupado(int idEspacio) {
 
         String sql = "UPDATE espacio_garage SET ocupado = true WHERE id = ?";
@@ -133,39 +130,93 @@ public class GarageDAO {
         }
     }
 
-    
     public boolean existeAsignacion(String matricula) {
 
-    String sql = "SELECT 1 FROM espacios_garage WHERE matricula_vehiculo = ? LIMIT 1";
+        String sql = "SELECT 1 FROM espacios_garage WHERE matricula_vehiculo = ? LIMIT 1";
 
-    try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd);
-         PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection con = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = con.prepareStatement(sql)) {
 
-        ps.setString(1, matricula);   // 🔥 ESTO ES CLAVE
+            ps.setString(1, matricula);   // 🔥 ESTO ES CLAVE
 
-        ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            return true;  // ya existe asignación
+            if (rs.next()) {
+                return true;  // ya existe asignación
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return false;  // no existe
     }
 
-    return false;  // no existe
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void actualizarEspacio(EspacioGarage espacio) {
+
+        String sql = "UPDATE espacios_garage SET ocupado = ? WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setBoolean(1, espacio.isOcupado());
+            ps.setInt(2, espacio.getId());
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean liberarEspacioPorMatricula(String matricula) {
+
+        String sql = """
+        UPDATE espacios_garage 
+        SET ocupado = false, 
+            matricula_vehiculo = NULL
+        WHERE matricula_vehiculo = ?
+    """;
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, matricula);
+
+            int filasAfectadas = ps.executeUpdate();
+            return filasAfectadas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<EspacioGarage> obtenerEspaciosOcupados() {
+
+        List<EspacioGarage> lista = new ArrayList<>();
+
+        String sql = """
+        SELECT * FROM espacios_garage
+        WHERE ocupado = true
+        AND matricula_vehiculo IS NOT NULL
+    """;
+
+        try (Connection conn = DriverManager.getConnection(dbFullURL, dbUser, dbPswd); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                EspacioGarage espacio = new EspacioGarage(
+                        rs.getInt("id"),
+                        TipoVehiculo.valueOf(rs.getString("tipo_zona")),
+                        rs.getInt("numero_espacio"),
+                        rs.getBoolean("ocupado"),
+                        rs.getString("matricula_vehiculo")
+                );
+                lista.add(espacio);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
 } //FIN DE CLASE

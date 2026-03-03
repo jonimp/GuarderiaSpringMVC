@@ -6,8 +6,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    height: 100vh;
-    overflow: hidden;
 }
 
 .banda-superior {
@@ -16,28 +14,26 @@ body {
     display: flex;
     align-items: center; /* Centra verticalmente el contenido */
 }
-
+/*
 .contendor-cabecera {
     width: 100%;
     display: flex;
     justify-content: center; 
 
 }
-
+*/
 .lista-menu {
     display: flex;
     gap: 70px;
 }
 
 .contenido-principal {
-    height: calc(100vh - 80px);
-    display: flex;  
     padding: 40px;
     background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
-    flex-direction: column; 
 }
-
+/*
 .menu-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 0px;
@@ -47,15 +43,21 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     width: 100%;
-    max-width: 900px;
     text-align: center;
     animation: fadeIn 0.5s ease-out;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     height: auto;
     margin: 0 auto;
     padding: 30px 20px;
     gap: 40px;
+} */
+
+.menu-container {
+    background-color: #e6e6e6;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
 }
 
 .filtros-por-tipo {
@@ -66,7 +68,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
-    
+
 }
 
 .filtros-por-tipo input {
@@ -93,7 +95,7 @@ body {
 
 .boton {
     display: inline-block;
-    width: 80px;
+    min-width: 80px;
     background-color: #f18a13;
     color: white;
     text-decoration: none;
@@ -138,16 +140,30 @@ body {
 .enlace-menu:hover::after {
     width: 80%;
 }
-
+/*
 .tabla-resultados th, .tabla-resultados td {
+    display: flex;
     padding: 5px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+     flex-wrap: nowrap;
+}
+*/
+.tabla-resultados td:last-child {
+    white-space: nowrap;
+}
+
+.tabla-resultados th,
+.tabla-resultados td {
+    padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-
-
-
+.tabla-resultados th {
+    background-color: #f3f3f3;
+    font-weight: 600;
+}
 
 
 
@@ -189,7 +205,7 @@ body {
         height: auto;
         padding: 15px;
     }
-    
-   
-    
+
+
+
 }

@@ -34,13 +34,13 @@
             <!-- Zona Motorhome -->
             <div class="zona-garage">
                 <h3>Zona Motorhome</h3>
-                               
+
                 <div class="indicador-capacidad">
                     <div class="barra-progreso" style="width: ${estadoMotorhome.porcentaje}%"></div>
                     <span class="texto-capacidad">${estadoMotorhome.ocupados}/${estadoMotorhome.total}</span>
                 </div>
                 <div class="espacios-grid">
-                    
+
                     <c:forEach var="espacio" items="${motorhomes}">
                         <div class="espacio ${espacio.ocupado ? 'ocupado' : 'libre'}">
                             ${espacio.numeroEspacio}
@@ -123,6 +123,33 @@
 
         </c:if>
 
+
+
+        <c:if test="${not empty espaciosOcupados}">
+
+            <hr>
+
+            <h3>Liberar Vehículo del Garage</h3>
+
+            <form method="post" action="${pageContext.request.contextPath}/admin/liberarEspacio">
+
+                <label>Vehículos en Garage:</label>
+
+                <select name="matricula">
+                    <c:forEach var="espacio" items="${espaciosOcupados}">
+                        <option value="${espacio.matriculaVehiculo}">
+                            ${espacio.matriculaVehiculo}
+                            - Zona: ${espacio.tipoZona}
+                            - Espacio Nº ${espacio.numeroEspacio}
+                        </option>
+                    </c:forEach>
+                </select>
+
+                <button type="submit">Liberar Espacio</button>
+
+            </form>
+
+        </c:if>
 
 
 

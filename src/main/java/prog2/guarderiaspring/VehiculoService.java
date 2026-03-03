@@ -72,6 +72,14 @@ public class VehiculoService {
         return true;
     }
 
+    public boolean liberarEspacio(String matricula) {
+        return garageDAO.liberarEspacioPorMatricula(matricula);
+    }
+
+    public List<EspacioGarage> obtenerEspaciosOcupados() {
+        return garageDAO.obtenerEspaciosOcupados();
+    }
+
 } //FIN DE CLASE    
 /*
     
