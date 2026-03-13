@@ -5,16 +5,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/estiloUsuarios.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloUsuarios.css">
         <title>Menú Empleado</title>
     </head>
     <body>
 
         <header class="banda-superior">
             <div class="contendor-cabecera">
-
-
                 <nav>
                     <div class="lista-menu">
                         <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
@@ -36,7 +33,7 @@
                 <form action="${pageContext.request.contextPath}/empleado/misEspacios" method="get">
                     <button type="submit">Consultar vehiculos a cargo</button>
                 </form>
-                <form action="logout" method="get">
+                <form action="${pageContext.request.contextPath}/logout" method="get">
                     <button class="salir" type="submit">Cerrar sesion</button>
                 </form>
             </div>

@@ -41,7 +41,7 @@
                 <form action="${pageContext.request.contextPath}/admin/asignarEmpleado" method="get">
                     <button type="submit">Asignar empleado a garage</button>
                 </form>
-                <form action="logout" method="get">
+                <form aaction="${pageContext.request.contextPath}/logout" method="get">
                     <button class="salir" type="submit">Cerrar sesión</button>
                 </form>
             </div>

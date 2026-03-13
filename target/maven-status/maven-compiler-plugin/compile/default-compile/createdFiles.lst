@@ -5,6 +5,7 @@ guarderiaSpring/repositorio/VehiculoDAO.class
 guarderiaSpring/modelo/Vehiculo.class
 guarderiaSpring/repositorio/SocioDAO.class
 guarderiaSpring/modelo/Socio.class
+guarderiaSpring/controlador/ControladorAdmin.class
 guarderiaSpring/configuracion/FiltroCache.class
 guarderiaSpring/repositorio/EmpleadoDAO.class
 guarderiaSpring/modelo/EstadoZona.class
@@ -16,10 +17,12 @@ guarderiaSpring/servicio/UsuarioService.class
 guarderiaSpring/controlador/ControladorInicial.class
 guarderiaSpring/modelo/Usuario.class
 guarderiaSpring/servicio/VehiculoService.class
+guarderiaSpring/controlador/ControladorEmpleado.class
 guarderiaSpring/repositorio/AdministradorDAO.class
 guarderiaSpring/configuracion/Inicializador.class
 guarderiaSpring/modelo/Empleado.class
 guarderiaSpring/repositorio/GarageDAO.class
 guarderiaSpring/modelo/UsuarioListado.class
+guarderiaSpring/controlador/ControladorSocio.class
 guarderiaSpring/enumerador/TipoUsuario.class
 guarderiaSpring/enumerador/TipoVehiculo.class

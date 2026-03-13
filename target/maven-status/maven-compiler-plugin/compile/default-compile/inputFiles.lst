@@ -1,7 +1,10 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/configuracion/Configuracion.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/configuracion/FiltroCache.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/configuracion/Inicializador.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorAdmin.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorEmpleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorInicial.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorSocio.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/LoginForm.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoUsuario.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoVehiculo.java
