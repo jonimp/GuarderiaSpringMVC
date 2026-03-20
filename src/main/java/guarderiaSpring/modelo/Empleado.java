@@ -4,13 +4,13 @@ import guarderiaSpring.enumerador.TipoUsuario;
 
 public class Empleado extends Usuario {
     
-    private String dni, nombre, direccion, telefono, especialidad;
+    private String direccion, telefono, especialidad;
     
     public Empleado(String u, String p, String nombre, String dni, String direccion, String telefono, String especialidad){
         setUsuario(u);
         setPassword(p);
-        this.nombre = nombre;
-        this.dni = dni;
+        setNombre(nombre);
+        setDni(dni);
         this.direccion = direccion;
         this.telefono = telefono;
         this.especialidad = especialidad;
@@ -28,23 +28,6 @@ public class Empleado extends Usuario {
         return "/empleado";
     }
     
-    public String getDni() {
-        return dni;
-    }
-
-       
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getDireccion() {
         return direccion;
     }

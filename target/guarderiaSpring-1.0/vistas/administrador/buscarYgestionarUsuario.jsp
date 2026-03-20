@@ -5,30 +5,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloGestionUsuario.css">
         <title>gestion usuarios</title>
     </head>
     <body>
-        <header class="banda-superior">
-            <div class="contendor-cabecera">
-                <nav>
-                    <div class="lista-menu">
-                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
-                        <a href="${pageContext.request.contextPath}/servicios" class="enlace-menu">Servicios</a>
-                        <a href="${pageContext.request.contextPath}/galeria" class="enlace-menu">Galería</a>
-                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
-                    </div>
-                </nav>
-
-            </div>    
-        </header>
+        
+        <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <main class="contenido-principal">
             <div class="menu-container">
                 <h2>Búsqueda de Usuarios</h2>
 
-                <form action="${pageContext.request.contextPath}/admin/buscar?modo=${modo}" method="get">
+                <form action="${pageContext.request.contextPath}/admin/buscar" method="get">
                     <input type="hidden" name="modo" value="${modo}">
                     <div class="filtros-por-tipo">
                         <select name="tipoUsuario" id="tipoUsuario" onchange="this.form.submit();">
@@ -50,6 +38,7 @@
 
                         <input type="text"
                                name="nombre" 
+                               value="${param.nombre}"
                                placeholder=" Buscar por nombre ó usuario ..."
                                id="nombreBusqueda">
 
@@ -97,10 +86,8 @@
                     </tbody>
 
                 </table>
-                    <a class="boton" href="${pageContext.request.contextPath}/admin">Volver</a>
+                    <a class="boton" href="${pageContext.request.contextPath}/admin/inicio">Volver</a>
             </div>
         </main>
     </body>
-
-
 </html>

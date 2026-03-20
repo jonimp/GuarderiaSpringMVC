@@ -10,18 +10,8 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/registrar.css">
     </head>
      <body>
-        <header class="banda-superior">
-            <div class="contendor-cabecera">
-                <nav class="menu-principal">
-                    <div class="lista-menu">
-                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
-                        <a href="${pageContext.request.contextPath}/servicios" class="enlace-menu">Servicios</a>
-                        <a href="${pageContext.request.contextPath}/galeria" class="enlace-menu">Galería</a>
-                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
-                    </div>
-                </nav>          
-            </div>    
-        </header>
+      
+        <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <main class="contenido-principal">
             <form action="${pageContext.request.contextPath}/admin/registrar" method="post">
@@ -33,13 +23,13 @@
                             <span class="dato-label">Tipo de usuario:</span>
                         </div>
                         <div class="dato-content">
-                            <select name="tipoUsuario" class="selector" 
-                                    onchange="window.location.href = '${pageContext.request.contextPath}/admin/registrar?tipoUsuario=' + this.value;" 
+                            <select name="tipo" class="selector" 
+                                    onchange="window.location.href = '${pageContext.request.contextPath}/admin/registrar?tipo=' + this.value;" 
                                     >
-                                <option value="" ${empty param.tipoUsuario ? 'selected' : ''}>Seleccione un tipo</option>
-                                <option value="administrador" ${param.tipoUsuario == 'administrador' ? 'selected' : ''}>Administrador</option>
-                                <option value="empleado" ${param.tipoUsuario == 'empleado' ? 'selected' : ''}>Empleado</option>
-                                <option value="socio" ${param.tipoUsuario == 'socio' ? 'selected' : ''}>Socio</option>
+                                <option value="" ${empty usuario.tipo ? 'selected' : ''}>Seleccione un tipo</option>
+                                <option value="ADMINISTRADOR" ${usuario.tipo == 'ADMINISTRADOR' ? 'selected' : ''}>Administrador</option>
+                                <option value="EMPLEADO" ${usuario.tipo == 'EMPLEADO' ? 'selected' : ''}>Empleado</option>
+                                <option value="SOCIO" ${usuario.tipo == 'SOCIO' ? 'selected' : ''}>Socio</option>
                             </select>
                         </div>
                     </div>
@@ -51,7 +41,7 @@
                             <span class="dato-label">Usuario:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="text" name="usuario" class="dato-input" value="${param.usuario}" required>
+                            <input type="text" name="usuario" class="dato-input" value="${usuario.usuario}" required>
                         </div>
                     </div>
                     <div class="dato-linea">
@@ -60,7 +50,7 @@
                             <span class="dato-label">Contraseña:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="password" name="password" class="dato-input" value="${param.password}" required>
+                            <input type="password" name="password" class="dato-input" value="${usuario.password}" required>
                         </div>
                     </div>
                     <div class="dato-linea">
@@ -69,7 +59,7 @@
                             <span class="dato-label">Nombre:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="text" name="nombre" class="dato-input" value="${param.nombre}" required>
+                            <input type="text" name="nombre" class="dato-input" value="${usuario.nombre}" required>
                         </div>
                     </div>
                     <div class="dato-linea">
@@ -78,20 +68,20 @@
                             <span class="dato-label">D.N.I:</span>
                         </div>
                         <div class="dato-content">
-                            <input type="text" name="dni" class="dato-input" value="${param.dni}" required>
+                            <input type="text" name="dni" class="dato-input" value="${usuario.dni}" required>
                         </div>
                     </div>
 
                     <!-- Campos específicos según tipo de usuario -->
                     <c:choose>
-                        <c:when test="${param.tipoUsuario == 'empleado'}">
+                        <c:when test="${usuario.tipo == 'EMPLEADO'}">
                             <div class="dato-linea">
                                 <div class="dato-header">
                                     <i class="fas fa-home"></i>
                                     <span class="dato-label">Dirección:</span>
                                 </div>
                                 <div class="dato-content">
-                                    <input type="text" name="direccion" class="dato-input" value="${param.direccion}" required>
+                                    <input type="text" name="direccion" class="dato-input" value="${usuario.direccion}" required>
                                 </div>
                             </div>
                             <div class="dato-linea">
@@ -100,7 +90,7 @@
                                     <span class="dato-label">Teléfono:</span>
                                 </div>
                                 <div class="dato-content">
-                                    <input type="text" name="telefono" class="dato-input" value="${param.telefono}" required>
+                                    <input type="text" name="telefono" class="dato-input" value="${usuario.telefono}" required>
                                 </div>
                             </div>
                             <div class="dato-linea">
@@ -109,19 +99,19 @@
                                     <span class="dato-label">Especialidad:</span>
                                 </div>
                                 <div class="dato-content">
-                                    <input type="text" name="especialidad" class="dato-input" value="${param.especialidad}" required>
+                                    <input type="text" name="especialidad" class="dato-input" value="${usuario.especialidad}" required>
                                 </div>
                             </div>
                         </c:when>
 
-                        <c:when test="${param.tipoUsuario == 'socio'}">
+                        <c:when test="${usuario.tipo == 'SOCIO'}">
                             <div class="dato-linea">
                                 <div class="dato-header">
                                     <i class="fas fa-home"></i>
                                     <span class="dato-label">Dirección:</span>
                                 </div>
                                 <div class="dato-content">
-                                    <input type="text" name="direccion" class="dato-input" value="${param.direccion}" required>
+                                    <input type="text" name="direccion" class="dato-input" value="${usuario.direccion}" required>
                                 </div>
                             </div>
                             <div class="dato-linea">
@@ -130,7 +120,7 @@
                                     <span class="dato-label">Teléfono:</span>
                                 </div>
                                 <div class="dato-content">
-                                    <input type="text" name="telefono" class="dato-input" value="${param.telefono}" required>
+                                    <input type="text" name="telefono" class="dato-input" value="${usuario.telefono}" required>
                                 </div>
                             </div>
                         </c:when>
@@ -138,7 +128,7 @@
 
                     <!-- Botones de acción -->
                     <div class="botones-edicion">
-                        <a href="${pageContext.request.contextPath}/admin" class="boton-cancelar">Cancelar</a>
+                        <a href="${pageContext.request.contextPath}/admin/inicio" class="boton-cancelar">Cancelar</a>
                         <button type="submit" class="boton-aceptar">Registrar</button>
                     </div>
                 </div>        

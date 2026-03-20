@@ -10,18 +10,8 @@
         <title>Mis Vehículos</title>
     </head>
     <body>
-        <header class="banda-superior">
-            <div class="contendor-cabecera">
-                <nav>
-                    <div class="lista-menu">
-                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
-                        <a href="${pageContext.request.contextPath}/servicios" class="enlace-menu">Servicios</a>
-                        <a href="${pageContext.request.contextPath}/galeria" class="enlace-menu">Galería</a>
-                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
-                    </div>
-                </nav>
-            </div>    
-        </header>
+        
+        <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <div class="contenido-principal">
             <h2>Mis vehículos</h2>

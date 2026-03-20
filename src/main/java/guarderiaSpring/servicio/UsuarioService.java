@@ -1,6 +1,9 @@
 package guarderiaSpring.servicio;
 
+import guarderiaSpring.dto.BusquedaUsuarioForm;
+import guarderiaSpring.dto.RegistroUsuario;
 import guarderiaSpring.enumerador.TipoUsuario;
+import guarderiaSpring.modelo.Administrador;
 import guarderiaSpring.repositorio.UsuarioDAO;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +22,13 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioDAO usuarioDAO;
-
     @Autowired
     private AdministradorDAO administradorDAO;
-
     @Autowired
     private EmpleadoDAO empleadoDAO;
-    
     @Autowired
     private SocioDAO socioDAO;
-    
+
     public Usuario validarUsuario(String usuario, String password) {
 
         TipoUsuario tipo = usuarioDAO.validarUsuario(usuario, password);
@@ -39,23 +39,64 @@ public class UsuarioService {
 
         return switch (tipo) {
 
-            case ADMINISTRADOR -> administradorDAO.buscarAdministrador(usuario);
-
-            case EMPLEADO -> empleadoDAO.buscarEmpleado(usuario);
-
-            case SOCIO -> socioDAO.buscarSocio(usuario);
-
-            default -> null;
+            case ADMINISTRADOR ->
+                administradorDAO.buscarAdministrador(usuario);
+            case EMPLEADO ->
+                empleadoDAO.buscarEmpleado(usuario);
+            case SOCIO ->
+                socioDAO.buscarSocio(usuario);
+            default ->
+                null;
         };
     }
-    
-    
-    
-    /*
-    public List<UsuarioListado> buscar(String tipoUsuario, String nombre) {
-        return usuarioDAO.buscarListado(tipoUsuario, nombre);
+
+    public List<UsuarioListado> listarUsuarios(BusquedaUsuarioForm busqueda) {
+        return usuarioDAO.buscarListado(busqueda.getNombre(), busqueda.getTipoUsuario());
     }
 
+    public void registrarUsuario(RegistroUsuario dto) {
+
+        if (dto.getTipo() == null) {
+            throw new IllegalArgumentException("El tipo de usuario es obligatorio");
+        }
+
+        switch (dto.getTipo()) {
+
+            case ADMINISTRADOR -> {
+                Administrador admin = new Administrador();
+                mapearDatosBasicos(admin, dto);
+                administradorDAO.guardarAdministrador(admin);
+            }
+
+            case EMPLEADO -> {
+                Empleado emp = new Empleado();
+                mapearDatosBasicos(emp, dto);
+                emp.setDireccion(dto.getDireccion());
+                emp.setTelefono(dto.getTelefono());
+                emp.setEspecialidad(dto.getEspecialidad());
+                empleadoDAO.guardarEmpleado(emp);
+            }
+
+            case SOCIO -> {
+                Socio socio = new Socio();
+                mapearDatosBasicos(socio, dto);
+                socio.setDireccion(dto.getDireccion());
+                socio.setTelefono(dto.getTelefono());
+                socioDAO.guardarSocio(socio);
+            }
+
+            default ->
+                throw new IllegalArgumentException("Tipo desconocido");
+        }
+    }
+
+    private void mapearDatosBasicos(Usuario usuario, RegistroUsuario dto) {
+        usuario.setUsuario(dto.getUsuario());
+        usuario.setPassword(dto.getPassword());
+        usuario.setNombre(dto.getNombre());
+        usuario.setDni(dto.getDni());
+    }
+    /*
     public Usuario buscarPorUsuario(String usuario) {
         return usuarioDAO.buscarPorUsuario(usuario);
     }
@@ -79,6 +120,6 @@ public class UsuarioService {
     public List<Empleado> obtenerEmpleados() {
         return usuarioDAO.obtenerEmpleados();
     }
-*/
-    
+     */
+
 }

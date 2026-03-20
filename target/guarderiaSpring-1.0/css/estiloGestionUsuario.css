@@ -22,18 +22,32 @@ body {
 }
 
 .contenido-principal {
+    height: calc(100vh - 80px);
+    display: flex;  
     padding: 40px;
     background: linear-gradient(180deg, #bddfb0 0%, #0b290c 100%);
-      overflow-y: auto;  
+    flex-direction: column; 
 }
 
-
 .menu-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    height: calc(100vh - 80px);
     background-color: #e6e6e6;
-    padding: 30px;
+    padding: 40px;
     border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     width: 100%;
-      overflow-y: auto;  
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px 20px;
+    gap: 40px;
 }
 
 .filtros-por-tipo {
@@ -116,19 +130,12 @@ body {
 .enlace-menu:hover::after {
     width: 80%;
 }
-/*
-.tabla-resultados th, .tabla-resultados td {
-    display: flex;
-    padding: 5px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-     flex-wrap: nowrap;
-}
-*/
+
 .tabla-resultados td:last-child {
     white-space: nowrap;
       overflow-y: auto;  
 }
+
 
 .tabla-resultados th,
 .tabla-resultados td {

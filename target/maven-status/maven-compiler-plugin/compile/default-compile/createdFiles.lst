@@ -3,6 +3,7 @@ guarderiaSpring/servicio/UsuarioService$1.class
 guarderiaSpring/repositorio/UsuarioDAO.class
 guarderiaSpring/repositorio/VehiculoDAO.class
 guarderiaSpring/modelo/Vehiculo.class
+guarderiaSpring/mapper/UsuarioListadoRowMapper.class
 guarderiaSpring/repositorio/SocioDAO.class
 guarderiaSpring/modelo/Socio.class
 guarderiaSpring/controlador/ControladorAdmin.class
@@ -12,6 +13,7 @@ guarderiaSpring/modelo/EstadoZona.class
 guarderiaSpring/servicio/SocioService.class
 guarderiaSpring/configuracion/Configuracion.class
 guarderiaSpring/modelo/Administrador.class
+guarderiaSpring/dto/RegistroUsuario.class
 guarderiaSpring/dto/LoginForm.class
 guarderiaSpring/servicio/UsuarioService.class
 guarderiaSpring/controlador/ControladorInicial.class
@@ -21,6 +23,7 @@ guarderiaSpring/controlador/ControladorEmpleado.class
 guarderiaSpring/repositorio/AdministradorDAO.class
 guarderiaSpring/configuracion/Inicializador.class
 guarderiaSpring/modelo/Empleado.class
+guarderiaSpring/dto/BusquedaUsuarioForm.class
 guarderiaSpring/repositorio/GarageDAO.class
 guarderiaSpring/modelo/UsuarioListado.class
 guarderiaSpring/controlador/ControladorSocio.class

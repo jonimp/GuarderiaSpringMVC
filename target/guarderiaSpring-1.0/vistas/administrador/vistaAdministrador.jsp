@@ -10,18 +10,7 @@
     </head>
     <body>
 
-        <header class="banda-superior">
-            <div class="contendor-cabecera">
-                <nav>
-                    <div class="lista-menu">
-                        <a href="${pageContext.request.contextPath}/" class="enlace-menu">Inicio</a>
-                        <a href="${pageContext.request.contextPath}/servicios" class="enlace-menu">Servicios</a>
-                        <a href="${pageContext.request.contextPath}/galeria" class="enlace-menu">Galería</a>
-                        <a href="${pageContext.request.contextPath}/contacto" class="enlace-menu">Contacto</a>
-                    </div>
-                </nav>
-            </div>    
-        </header>
+      <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <main class="contenido-principal-admin">
             <div class="menu-container">
@@ -41,7 +30,7 @@
                 <form action="${pageContext.request.contextPath}/admin/asignarEmpleado" method="get">
                     <button type="submit">Asignar empleado a garage</button>
                 </form>
-                <form aaction="${pageContext.request.contextPath}/logout" method="get">
+                <form action="${pageContext.request.contextPath}/logout" method="get">
                     <button class="salir" type="submit">Cerrar sesión</button>
                 </form>
             </div>

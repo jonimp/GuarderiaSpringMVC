@@ -5,9 +5,12 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorEmpleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorInicial.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorSocio.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/BusquedaUsuarioForm.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/LoginForm.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/RegistroUsuario.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoUsuario.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoVehiculo.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/mapper/UsuarioListadoRowMapper.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/modelo/Administrador.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/modelo/Empleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/modelo/EspacioGarage.java

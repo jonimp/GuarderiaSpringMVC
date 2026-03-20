@@ -1,17 +1,16 @@
 package guarderiaSpring.modelo;
 
 import guarderiaSpring.enumerador.TipoUsuario;
-import java.time.LocalDateTime;
 
 public class Socio extends Usuario {
 
-    private String dni, nombre, direccion, telefono;
+    private String direccion, telefono;
 
     public Socio(String u, String p, String nombre, String dni, String telefono, String direccion) {
         setUsuario(u);
         setPassword(p);
-        this.nombre = nombre;
-        this.dni = dni;
+        setNombre(nombre);
+        setDni(dni);
         this.telefono = telefono;
         this.direccion = direccion;
     }
@@ -28,22 +27,6 @@ public class Socio extends Usuario {
         return "/socio";
     }
     
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getDireccion() {
         return direccion;
     }
