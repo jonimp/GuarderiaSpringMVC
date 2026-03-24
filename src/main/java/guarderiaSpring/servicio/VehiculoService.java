@@ -1,5 +1,6 @@
 package guarderiaSpring.servicio;
 
+import guarderiaSpring.dto.RegistroVehiculoDTO;
 import guarderiaSpring.repositorio.GarageDAO;
 import guarderiaSpring.repositorio.VehiculoDAO;
 import java.sql.SQLException;
@@ -20,16 +21,19 @@ public class VehiculoService {
     @Autowired
     private GarageDAO garageDAO;
 
-    public void agregarVehiculo(String matricula, String dni, String nombre, TipoVehiculo tipoVehiculo) throws SQLException {
-
-        Vehiculo v = new Vehiculo(matricula, dni, nombre, tipoVehiculo);
-        vehiculoDAO.agregarVehiculo(v);
+    public void registrarVehiculo(RegistroVehiculoDTO vDto) {
+        Vehiculo vehiculo = new Vehiculo();
+        vehiculo.setMatricula(vDto.getMatricula());
+        vehiculo.setDniSocio(vDto.getDniSocio());
+        vehiculo.setNombre(vDto.getNombre());
+        vehiculo.setTipoVehiculo(vDto.getTipoVehiculo());
+        vehiculoDAO.agregarVehiculo(vehiculo);
     }
-
+/*
     public List<Vehiculo> obtenerVehiculos(String dni) {
         return vehiculoDAO.obtenerVehiculosPorDni(dni);
     }
-
+*/
     public EstadoZona calcularEstadoZona(TipoVehiculo tipo) {
 
         List<EspacioGarage> espacios = garageDAO.obtenerPorTipo(tipo);
@@ -49,11 +53,11 @@ public class VehiculoService {
     public List<EspacioGarage> obtenerEspaciosLibresPorTipo(TipoVehiculo tipo) {
         return garageDAO.obtenerEspaciosLibresPorTipo(tipo);
     }
-
+    /*
     public List<Vehiculo> obtenerVehiculosPorDniSocio(String dni) {
         return vehiculoDAO.obtenerVehiculosPorDni(dni);
     }
-
+*/
     public boolean asignarEspacio(Vehiculo vehiculo) {
 
         if (garageDAO.existeAsignacion(vehiculo.getMatricula())) {
@@ -101,7 +105,5 @@ public class VehiculoService {
     public List<EspacioGarage> obtenerEspaciosPorEmpleado(String dniEmpleado) {
         return garageDAO.buscarEspaciosPorEmpleado(dniEmpleado);
     }
-    
-    
 
 } //FIN DE CLASE    

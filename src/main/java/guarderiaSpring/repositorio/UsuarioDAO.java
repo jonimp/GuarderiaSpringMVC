@@ -73,7 +73,7 @@ public class UsuarioDAO {
         return jdbcTemplate.query(
                 sql.toString(),
                 params.toArray(),
-                new UsuarioListadoRowMapper() // 🔥 ACÁ está la clave
+                new UsuarioListadoRowMapper()
         );
     }
 /*----------------------------------------------------------------------------*/
@@ -117,21 +117,19 @@ public class UsuarioDAO {
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------*/
-    public Empleado buscarEmpleado(String usuario) {
-        String sql = "SELECT * FROM empleados WHERE usuario = ?";
-
+    public String buscarTipoUsuario(String nombreUsuario){
+        String sql = "SELECT tipo FROM usuarios WHERE usuario = ?";
         
-        return null;
+        return jdbcTemplate.queryForObject(
+                sql,
+                String.class,
+                nombreUsuario
+        );
     }
 
-    public Socio buscarSocio(String usuario) {
-        String sql = "SELECT * FROM socios WHERE usuario = ?";
+/*----------------------------------------------------------------------------*/
 
-       
-        return null;
-    }
-
-   
+/*----------------------------------------------------------------------------*/   
     private void actualizarAdministrador(Administrador a) throws SQLException {
 
         String sql = "UPDATE administradores SET usuario=?, password=?, nombre=? WHERE dni=?";

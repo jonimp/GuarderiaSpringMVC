@@ -1,11 +1,13 @@
 package guarderiaSpring.servicio;
 
-import guarderiaSpring.dto.BusquedaUsuarioForm;
-import guarderiaSpring.dto.RegistroUsuario;
+import guarderiaSpring.dto.BusquedaUsuarioFormDTO;
+import guarderiaSpring.dto.RegistroUsuarioDTO;
 import guarderiaSpring.enumerador.TipoUsuario;
+import static guarderiaSpring.enumerador.TipoUsuario.ADMINISTRADOR;
+import static guarderiaSpring.enumerador.TipoUsuario.EMPLEADO;
+import static guarderiaSpring.enumerador.TipoUsuario.SOCIO;
 import guarderiaSpring.modelo.Administrador;
 import guarderiaSpring.repositorio.UsuarioDAO;
-import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -50,11 +52,11 @@ public class UsuarioService {
         };
     }
 
-    public List<UsuarioListado> listarUsuarios(BusquedaUsuarioForm busqueda) {
+    public List<UsuarioListado> listarUsuarios(BusquedaUsuarioFormDTO busqueda) {
         return usuarioDAO.buscarListado(busqueda.getNombre(), busqueda.getTipoUsuario());
     }
 
-    public void registrarUsuario(RegistroUsuario dto) {
+    public void registrarUsuario(RegistroUsuarioDTO dto) {
 
         if (dto.getTipo() == null) {
             throw new IllegalArgumentException("El tipo de usuario es obligatorio");
@@ -90,36 +92,34 @@ public class UsuarioService {
         }
     }
 
-    private void mapearDatosBasicos(Usuario usuario, RegistroUsuario dto) {
+    private void mapearDatosBasicos(Usuario usuario, RegistroUsuarioDTO dto) {
         usuario.setUsuario(dto.getUsuario());
         usuario.setPassword(dto.getPassword());
         usuario.setNombre(dto.getNombre());
         usuario.setDni(dto.getDni());
     }
-    /*
-    public Usuario buscarPorUsuario(String usuario) {
-        return usuarioDAO.buscarPorUsuario(usuario);
-    }
+    
+    public Usuario buscarPorUsuario(String nombreUsuario) {
+        
+        String tipoUsuario = usuarioDAO.buscarTipoUsuario(nombreUsuario);
+        
+        return switch (tipoUsuario.toUpperCase()) {
 
-    public void actualizar(Usuario u) throws SQLException {
-        usuarioDAO.actualizar(u);
+            case "ADMINISTRADOR" ->
+                administradorDAO.buscarAdministrador(nombreUsuario);
+            case "EMPLEADO" ->
+                empleadoDAO.buscarEmpleado(nombreUsuario);
+            case "SOCIO" ->
+                socioDAO.buscarSocio(nombreUsuario);
+            default ->
+                null;
+        };
+        
     }
     
-    public void eliminar(Usuario u) throws SQLException {
-        usuarioDAO.eliminar(u);
-    }
-
-    public void guardar(Usuario u) throws SQLException {
-        usuarioDAO.guardar(u);
+    public void actualizarUsuario(RegistroUsuarioDTO dto){
+        
+        switch (dto.getTipo().toUpperCase())
     }
     
-    public List<Socio> obtenerSocios() {
-        return usuarioDAO.obtenerSocios();
-    }
-    
-    public List<Empleado> obtenerEmpleados() {
-        return usuarioDAO.obtenerEmpleados();
-    }
-     */
-
-}
+} //FIN DE CLASE

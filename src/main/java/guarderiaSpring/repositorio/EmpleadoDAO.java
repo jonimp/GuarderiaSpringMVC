@@ -22,10 +22,14 @@ public class EmpleadoDAO {
                 sql,
                 (rs, rowNum) -> {
                     Empleado empl = new Empleado();
-
                     empl.setUsuario(rs.getString("usuario"));
                     empl.setPassword(rs.getString("password"));
-
+                    empl.setNombre(rs.getString("nombre"));
+                    empl.setDni(rs.getString("dni"));
+                    empl.setDireccion(rs.getString("direccion"));
+                    empl.setTelefono(rs.getString("telefono"));
+                    empl.setEspecialidad(rs.getString("especialidad"));
+                                        
                     return empl;
                 },
                 usuario
@@ -35,7 +39,7 @@ public class EmpleadoDAO {
     
     public void guardarEmpleado(Empleado empl){
         
-        String sql = "INSERT INTO empleados (usuario, password, nombre, dni, direccion, telefono, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO empleados (usuario, password, nombre, dni, direccion, telefono, especialidad, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 
         jdbcTemplate.update(sql,
         empl.getUsuario(),
@@ -45,7 +49,7 @@ public class EmpleadoDAO {
         empl.getDireccion(),
         empl.getTelefono(),
         empl.getEspecialidad(),
-        empl.getTipo().name()
+        empl.getTipo().name().toLowerCase()
         );
     }
     

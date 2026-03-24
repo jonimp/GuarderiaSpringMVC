@@ -1,7 +1,7 @@
 package guarderiaSpring.controlador;
 
 import guarderiaSpring.servicio.UsuarioService;
-import guarderiaSpring.dto.LoginForm;
+import guarderiaSpring.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class ControladorInicial {
     }
 
     @PostMapping("/acceso")
-    public String usuarioLogeado(@ModelAttribute LoginForm login, HttpSession session, Model model) {
+    public String usuarioLogeado(@ModelAttribute LoginFormDTO login, HttpSession session, Model model) {
 
         Usuario usuario = usuarioService.validarUsuario(login.getUsuario(), login.getPassword());
 

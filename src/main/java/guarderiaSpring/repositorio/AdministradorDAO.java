@@ -24,7 +24,9 @@ public class AdministradorDAO {
 
                     admin.setUsuario(rs.getString("usuario"));
                     admin.setPassword(rs.getString("password"));
-
+                    admin.setNombre(rs.getString("nombre"));
+                    admin.setDni(rs.getString("dni"));
+                    
                     return admin;
                 },
                 usuario
@@ -41,7 +43,7 @@ public class AdministradorDAO {
             admin.getPassword(),
             admin.getNombre(),
             admin.getDni(),
-            admin.getTipo().name()
+            admin.getTipo().name().toLowerCase()
         );
     }
 

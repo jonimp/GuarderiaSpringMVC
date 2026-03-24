@@ -1,13 +1,13 @@
 package guarderiaSpring.dto;
 
-public class BusquedaUsuarioForm {
+public class BusquedaUsuarioFormDTO {
 
     private String usuario;
     private String nombre;
     private String tipoUsuario;
     
     
-    public BusquedaUsuarioForm() {}
+    public BusquedaUsuarioFormDTO() {}
 
     public String getUsuario() {
         return usuario;

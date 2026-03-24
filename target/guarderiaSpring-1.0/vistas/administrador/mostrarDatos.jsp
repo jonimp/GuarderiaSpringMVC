@@ -29,7 +29,7 @@
                 <c:choose>
 
                     <%-- ADMIN --%>
-                    <c:when test="${usuario.tipo == 'administrador'}">
+                    <c:when test="${usuario.tipo == 'ADMINISTRADOR'}">
 
                         <div class="dato-linea">
                             <div class="dato-header">
@@ -54,7 +54,7 @@
 
 
                     <%-- EMPLEADO --%>
-                    <c:when test="${usuario.tipo == 'empleado'}">
+                    <c:when test="${usuario.tipo == 'EMPLEADO'}">
                         
                         <div class="dato-linea">
                             <div class="dato-header">
@@ -109,7 +109,7 @@
 
 
                     <%-- SOCIO --%>
-                    <c:when test="${usuario.tipo == 'socio'}">
+                    <c:when test="${usuario.tipo == 'SOCIO'}">
 
                         <div class="dato-linea">
                             <div class="dato-header">
@@ -156,7 +156,7 @@
                 </c:choose>
 
                 <div>
-                    <a href="${pageContext.request.contextPath}/panel" class="boton-retroceso">Volver</a>
+                    <a href="${pageContext.request.contextPath}/admin/buscar" class="boton-retroceso">Volver</a>
                 </div>
             </div>
         </main>

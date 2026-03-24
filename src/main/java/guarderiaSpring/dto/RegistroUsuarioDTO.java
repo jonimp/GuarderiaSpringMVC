@@ -2,7 +2,7 @@ package guarderiaSpring.dto;
 
 import guarderiaSpring.enumerador.TipoUsuario;
 
-public class RegistroUsuario {
+public class RegistroUsuarioDTO {
     private String usuario;
     private String password;
     private String nombre;
@@ -12,7 +12,7 @@ public class RegistroUsuario {
     private String especialidad;
     private TipoUsuario tipo;
     
-    public RegistroUsuario() {}
+    public RegistroUsuarioDTO() {}
 
     public String getUsuario() {
         return usuario;

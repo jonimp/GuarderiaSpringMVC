@@ -24,7 +24,11 @@ public class SocioDAO {
 
                     soc.setUsuario(rs.getString("usuario"));
                     soc.setPassword(rs.getString("password"));
-
+                    soc.setNombre(rs.getString("nombre"));
+                    soc.setDni(rs.getString("dni"));
+                    soc.setDireccion(rs.getString("direccion"));
+                    soc.setTelefono(rs.getString("telefono"));
+                    
                     return soc;
                 },
                 usuario
@@ -44,7 +48,7 @@ public class SocioDAO {
         soc.getDni(),
         soc.getDireccion(),
         soc.getTelefono(),
-        soc.getTipo().name()
+        soc.getTipo().name().toLowerCase()
         );
     }
     

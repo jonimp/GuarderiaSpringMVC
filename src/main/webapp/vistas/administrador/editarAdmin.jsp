@@ -16,7 +16,7 @@
         <main class="contenido-principal">
             <div>
                 <h1 class="titulo">EDITAR DATOS DE ADMINISTRADOR</h1>
-                <form action="${pageContext.request.contextPath}/admin/actualizarDatos" method="post">
+                <form action="${pageContext.request.contextPath}/admin/editar" method="post">
          
                     <!-- Usuario -->
                     <div class="dato-linea">

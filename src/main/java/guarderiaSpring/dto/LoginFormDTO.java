@@ -1,11 +1,11 @@
 package guarderiaSpring.dto;
 
-public class LoginForm {
+public class LoginFormDTO {
 
     private String usuario;
     private String password;
 
-    public LoginForm() {}
+    public LoginFormDTO() {}
 
     public String getUsuario() {
         return usuario;

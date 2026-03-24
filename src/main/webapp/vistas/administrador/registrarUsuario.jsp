@@ -129,7 +129,7 @@
                     <!-- Botones de acción -->
                     <div class="botones-edicion">
                         <a href="${pageContext.request.contextPath}/admin/inicio" class="boton-cancelar">Cancelar</a>
-                        <button type="submit" class="boton-aceptar">Registrar</button>
+                        <button type="submit" class="boton-aceptar">Aceptar</button>
                     </div>
                 </div>        
             </form>        

@@ -15,7 +15,7 @@
         <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <main class="contenido-principal">
-            <form action="${pageContext.request.contextPath}/admin/confirmarRegistro" method="post">
+            <form action="${pageContext.request.contextPath}/admin/registarVehiculo" method="post">
                 <div>
                     <h1 class="titulo">Registrar vehiculo</h1>
                     <div class="dato-sel">
