@@ -1,6 +1,8 @@
 package guarderiaSpring.repositorio;
 
+import guarderiaSpring.dto.RegistroUsuarioDTO;
 import guarderiaSpring.modelo.Socio;
+import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -53,4 +55,44 @@ public class SocioDAO {
     }
     
     
+    public void editarSocio(RegistroUsuarioDTO soc) {
+
+        String sql = "UPDATE socios SET usuario=?, password=?, nombre=? WHERE usuario = ?";
+        
+        jdbcTemplate.update(
+            sql,
+            soc.getUsuario(),
+            soc.getPassword(),
+            soc.getNombre(),
+            soc.getUsuarioOriginal()
+        );
+    }
+    
+    
+    public void eliminarSocio(String socio){
+        String sql = "DELETE FROM socios WHERE usuario = ?";
+        jdbcTemplate.update(sql, socio);
+    }
+    
+    
+    public List<Socio> obtenerLista(){
+        
+        String sql = "SELECT * FROM socios";
+        
+        return (List<Socio>) jdbcTemplate.query(
+                sql,
+                (rs, rowNum) -> {
+                    Socio soc = new Socio();
+
+                    soc.setUsuario(rs.getString("usuario"));
+                    soc.setPassword(rs.getString("password"));
+                    soc.setNombre(rs.getString("nombre"));
+                    soc.setDni(rs.getString("dni"));
+                    soc.setDireccion(rs.getString("direccion"));
+                    soc.setTelefono(rs.getString("telefono"));
+                    
+                    return soc;
+                }                
+        );
+    }
 } // FIN DE CLASE

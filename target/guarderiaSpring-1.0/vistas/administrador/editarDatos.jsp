@@ -10,8 +10,6 @@
 
         <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
-        <h1>EDITAR USUARIO</h1>
-
         <c:choose>
 
             <c:when test="${usuario.tipo == 'ADMINISTRADOR'}">

@@ -1,5 +1,6 @@
 package guarderiaSpring.repositorio;
 
+import guarderiaSpring.dto.RegistroUsuarioDTO;
 import guarderiaSpring.modelo.Empleado;
 import guarderiaSpring.modelo.Socio;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -53,5 +54,23 @@ public class EmpleadoDAO {
         );
     }
     
+    
+    public void editarEmpleado(RegistroUsuarioDTO empl) {
+
+        String sql = "UPDATE empleados SET usuario=?, password=?, nombre=? WHERE usuario = ?";
+        
+        jdbcTemplate.update(
+            sql,
+            empl.getUsuario(),
+            empl.getPassword(),
+            empl.getNombre(),
+            empl.getUsuarioOriginal()
+        );
+    }
+    
+    public void eliminarEmpleado(String empleado){
+        String sql = "DELETE FROM empleados WHERE usuario = ?";
+        jdbcTemplate.update(sql, empleado);
+    }
     
 } //FIN DE CLASE

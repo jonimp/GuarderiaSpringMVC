@@ -1,5 +1,6 @@
 package guarderiaSpring.repositorio;
 
+import guarderiaSpring.dto.RegistroUsuarioDTO;
 import guarderiaSpring.enumerador.TipoUsuario;
 import guarderiaSpring.mapper.UsuarioListadoRowMapper;
 import java.sql.SQLException;
@@ -126,84 +127,55 @@ public class UsuarioDAO {
                 nombreUsuario
         );
     }
-
 /*----------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------*/   
-    private void actualizarAdministrador(Administrador a) throws SQLException {
-
-        String sql = "UPDATE administradores SET usuario=?, password=?, nombre=? WHERE dni=?";
-
+    public void guardarUsuarioBase(RegistroUsuarioDTO us){
+        String sql = "INSERT INTO usuarios (usuario, password, tipo) VALUES (?, ?, ?)";
         
+        jdbcTemplate.update(
+            sql,
+            us.getUsuario(),
+            us.getPassword(),
+            us.getTipo().name().toLowerCase()
+        );
+    }    
+/*----------------------------------------------------------------------------*/
 
-    }
-
-    private void actualizarEmpleado(Empleado e) throws SQLException {
-
-        String sql = "UPDATE empleados SET usuario=?, password=?, nombre=?, direccion=?, telefono=?, especialidad=? WHERE dni=?";
-
-     
-
-    }
-
-    private void actualizarSocio(Socio s) throws SQLException {
-
-        String sql = "UPDATE socios SET usuario=?, password=?, nombre=?, direccion=?, telefono=? WHERE dni=?";
-
-       
-    }
-
-    public void eliminar(Usuario u) throws SQLException {
-
-        if (u instanceof Administrador administrador) {
-            eliminarAdministrador(administrador);
-        } else if (u instanceof Empleado empleado) {
-            eliminarEmpleado(empleado);
-        } else if (u instanceof Socio socio) {
-            eliminarSocio(socio);
-        }
-    }
-
-    private void eliminarAdministrador(Administrador a) throws SQLException {
-
-        String sql = "DELETE FROM administradores WHERE usuario=?";
-
+/*----------------------------------------------------------------------------*/
+    public void actualizarUsuarioBase(RegistroUsuarioDTO us){
+        String sql = "UPDATE usuarios SET usuario=?, password=? WHERE usuario = ?";
         
+        jdbcTemplate.update(
+            sql,
+            us.getUsuario(),
+            us.getPassword(),
+            us.getUsuarioOriginal()
+        );
     }
+/*----------------------------------------------------------------------------*/
 
-    private void eliminarEmpleado(Empleado e) throws SQLException {
-
-        String sql = "DELETE FROM empleados WHERE usuario=?";
-
-    
-
+/*----------------------------------------------------------------------------*/    
+    public void eliminarUsuario(String usuario) {
+        String sql = "DELETE FROM usuarios WHERE usuario = ?";
+        jdbcTemplate.update(sql, usuario);
     }
+/*----------------------------------------------------------------------------*/
 
-    private void eliminarSocio(Socio s) throws SQLException {
-
-        String sql = "DELETE FROM socios WHERE usuario=?";
-
-       
-    }
-
-
-  
-
+/*----------------------------------------------------------------------------*/
     public List<Socio> obtenerSocios() {
 
         List<Socio> lista = new ArrayList<>();
         String sql = "SELECT * FROM socios";
 
-       
-
-        return lista;
+         return lista;
     }
 
+    
     public List<Empleado> obtenerEmpleados() {
 
         List<Empleado> lista = new ArrayList<>();
         String sql = "SELECT * FROM empleados";
-
        
         return lista;
     }

@@ -10,14 +10,13 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estiloEditarDatos.css">
     </head>
     <body>
-        
-        <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
-        
+                
         <main class="contenido-principal">
             <div>
                 <h1 class="titulo">EDITAR DATOS DE EMPLEADO</h1>
                 <form action="${pageContext.request.contextPath}/admin/editar" method="post">
-            
+                    
+                    <input type="hidden" name="usuarioOriginal" value="${usuario.usuario}">
                     <!-- Usuario -->
                     <div class="dato-linea">
                         <div class="dato-header">
@@ -83,7 +82,7 @@
                     </div>
                     <!-- Botones de acción -->
                     <div class="botones-edicion">
-                        <a href="${pageContext.request.contextPath}/panel" class="boton-cancelar">Cancelar</a>
+                        <a href="${pageContext.request.contextPath}/admin/buscar" class="boton-cancelar">Cancelar</a>
                         <button type="submit" class="boton-aceptar">Aceptar</button>
                     </div>
                 </form>

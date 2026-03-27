@@ -15,7 +15,7 @@
         <jsp:include page="/vistas/autenticacion/encabezado.jsp"/>
 
         <main class="contenido-principal">
-            <form action="${pageContext.request.contextPath}/admin/registarVehiculo" method="post">
+            <form action="${pageContext.request.contextPath}/vehiculo/registrarVehiculo" method="post">
                 <div>
                     <h1 class="titulo">Registrar vehiculo</h1>
                     <div class="dato-sel">
@@ -75,7 +75,7 @@
 
                     <!-- Botones de acción -->
                     <div class="botones-edicion">
-                        <a href="${pageContext.request.contextPath}/admin" class="boton-cancelar">Cancelar</a>
+                        <a href="${pageContext.request.contextPath}/admin/inicio" class="boton-cancelar">Cancelar</a>
                         <button type="submit" class="boton-aceptar">Aceptar</button>
                     </div>
                 </div>

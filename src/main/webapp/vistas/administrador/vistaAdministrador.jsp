@@ -21,7 +21,7 @@
                 <form action="${pageContext.request.contextPath}/admin/registrar" method="get">
                     <button type="submit">Registrar Usuario</button>
                 </form>
-                <form action="${pageContext.request.contextPath}/admin/registrarVehiculo" method="get">
+                <form action="${pageContext.request.contextPath}/vehiculo/registrarVehiculo" method="get">
                     <button type="submit">Registrar vehiculo</button>
                 </form>
                 <form action="${pageContext.request.contextPath}/admin/gestionVehiculo" method="get">

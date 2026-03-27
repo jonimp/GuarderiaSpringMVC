@@ -25,7 +25,7 @@ public class ControladorAdmin {
 
     @Autowired
     private UsuarioService usuarioService;
-
+    
     @Autowired
     private VehiculoService vehiculoService;
 
@@ -34,7 +34,7 @@ public class ControladorAdmin {
 
         Usuario usuario = (Usuario) session.getAttribute("usuarioLogeado");
         model.addAttribute("usuario", usuario);
-
+        
         return "administrador/vistaAdministrador";
     }
 
@@ -67,17 +67,7 @@ public class ControladorAdmin {
         return "redirect:/admin/inicio";
     }
 
-    @GetMapping("/registrarVehiculo")
-    public String registrarVehiculo(@ModelAttribute("vehiculo") RegistroVehiculoDTO vDto) {
-        return "administrador/registrarVehiculo";
-    }
-
-    @PostMapping("/registrarVehiculo")
-    public String confirmarRegistro(@ModelAttribute("vehiculo") RegistroVehiculoDTO vDto) {
-        vehiculoService.registrarVehiculo(vDto);
-        return "redirect:/admin/inicio";
-    }
-
+    
     @GetMapping("/ver/{usuario}")
     public String verUsuario(@PathVariable("usuario") String nombreUsuario, Model model, HttpSession session) {
 
@@ -113,7 +103,15 @@ public class ControladorAdmin {
 
         usuarioService.actualizarUsuario(dto);
 
-        return "redirect:/admin";
+        return "redirect:/admin/buscar";
+    }
+
+    @PostMapping("/eliminar/{usuario}")
+    public String eliminarUsuario(@PathVariable("usuario") String usuario) {
+
+        usuarioService.eliminarUsuario(usuario);
+
+        return "redirect:/admin/buscar";
     }
 
 } //FIN DE CLASE

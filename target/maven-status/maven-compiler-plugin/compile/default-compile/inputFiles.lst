@@ -5,6 +5,7 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorEmpleado.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorInicial.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorSocio.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/controlador/ControladorVehiculo.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/BusquedaUsuarioFormDTO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/LoginFormDTO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/RegistroUsuarioDTO.java

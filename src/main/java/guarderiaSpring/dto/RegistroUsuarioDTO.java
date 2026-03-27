@@ -3,6 +3,7 @@ package guarderiaSpring.dto;
 import guarderiaSpring.enumerador.TipoUsuario;
 
 public class RegistroUsuarioDTO {
+    private String usuarioOriginal;
     private String usuario;
     private String password;
     private String nombre;
@@ -14,6 +15,14 @@ public class RegistroUsuarioDTO {
     
     public RegistroUsuarioDTO() {}
 
+    public String getUsuarioOriginal() {
+        return usuarioOriginal;
+    }
+
+    public void setUsuarioOriginal(String usuarioOriginal) {
+        this.usuarioOriginal = usuarioOriginal;
+    }
+    
     public String getUsuario() {
         return usuario;
     }

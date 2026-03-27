@@ -1,5 +1,6 @@
 package guarderiaSpring.repositorio;
 
+import guarderiaSpring.dto.RegistroUsuarioDTO;
 import guarderiaSpring.modelo.Administrador;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -46,5 +47,22 @@ public class AdministradorDAO {
             admin.getTipo().name().toLowerCase()
         );
     }
+    
+    public void editarAdministrador(RegistroUsuarioDTO admin) {
 
+        String sql = "UPDATE administradores SET usuario=?, password=?, nombre=? WHERE usuario = ?";
+        
+        jdbcTemplate.update(
+            sql,
+            admin.getUsuario(),
+            admin.getPassword(),
+            admin.getNombre(),
+            admin.getUsuarioOriginal()
+        );
+    }
+
+    public void eliminarAdministrador(String admin){
+        String sql = "DELETE FROM administradores WHERE usuario = ?";
+        jdbcTemplate.update(sql, admin);
+    }
 } //FIN DE CLASE

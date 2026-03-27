@@ -55,12 +55,18 @@ public class UsuarioService {
     public List<UsuarioListado> listarUsuarios(BusquedaUsuarioFormDTO busqueda) {
         return usuarioDAO.buscarListado(busqueda.getNombre(), busqueda.getTipoUsuario());
     }
+    
+    public List<Socio> obtenerSocios(){
+        return socioDAO.obtenerLista();
+    }
 
     public void registrarUsuario(RegistroUsuarioDTO dto) {
 
         if (dto.getTipo() == null) {
             throw new IllegalArgumentException("El tipo de usuario es obligatorio");
         }
+
+        usuarioDAO.guardarUsuarioBase(dto);
 
         switch (dto.getTipo()) {
 
@@ -98,11 +104,34 @@ public class UsuarioService {
         usuario.setNombre(dto.getNombre());
         usuario.setDni(dto.getDni());
     }
-    
+
+    public void eliminarUsuario(String usuario) {
+
+        String tipoUsuario = usuarioDAO.buscarTipoUsuario(usuario);
+
+        switch (tipoUsuario.toUpperCase()) {
+
+            case "ADMINISTRADOR" ->
+                administradorDAO.eliminarAdministrador(usuario);
+
+            case "EMPLEADO" ->
+                empleadoDAO.eliminarEmpleado(usuario);
+
+            case "SOCIO" ->
+                socioDAO.eliminarSocio(usuario);
+
+            default ->
+                throw new RuntimeException("Tipo desconocido");
+        }
+
+        
+        usuarioDAO.eliminarUsuario(usuario);
+    }
+
     public Usuario buscarPorUsuario(String nombreUsuario) {
-        
+
         String tipoUsuario = usuarioDAO.buscarTipoUsuario(nombreUsuario);
-        
+
         return switch (tipoUsuario.toUpperCase()) {
 
             case "ADMINISTRADOR" ->
@@ -114,12 +143,24 @@ public class UsuarioService {
             default ->
                 null;
         };
-        
+
     }
-    
-    public void actualizarUsuario(RegistroUsuarioDTO dto){
-        
-        switch (dto.getTipo().toUpperCase())
+
+    public void actualizarUsuario(RegistroUsuarioDTO dto) {
+
+        String tipoUsuario = usuarioDAO.buscarTipoUsuario(dto.getUsuarioOriginal());
+        usuarioDAO.actualizarUsuarioBase(dto);
+
+        switch (tipoUsuario.toUpperCase()) {
+            case "ADMINISTRADOR" ->
+                administradorDAO.editarAdministrador(dto);
+            case "EMPLEADO" ->
+                empleadoDAO.editarEmpleado(dto);
+            case "SOCIO" ->
+                socioDAO.editarSocio(dto);
+            default ->
+                throw new RuntimeException("Tipo de usuario desconocido");
+        }
     }
-    
+
 } //FIN DE CLASE
