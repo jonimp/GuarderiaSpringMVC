@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@page contentType="text/html;charset=UTF-8" language="java"%>
+<%@page isELIgnored="false"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -74,7 +74,7 @@
         <!-- Contenedor opcional para centrar el bloque completo -->
 <div class="formularios-container" style="display: flex; flex-direction: column; align-items: center;">
     
-    <form method="get" action="${pageContext.request.contextPath}/admin/gestionVehiculo">
+    <form method="get" action="${pageContext.request.contextPath}/vehiculo/gestionVehiculo">
         <label>Seleccionar Socio:</label>
         <div class="dato-content">
             <select class="selector" name="dni" onchange="this.form.submit()">
@@ -89,7 +89,7 @@
     </form>
 
     <c:if test="${not empty vehiculos}">
-        <form method="get" action="${pageContext.request.contextPath}/admin/asignarEspacio">
+        <form method="get" action="${pageContext.request.contextPath}/vehiculo/asignarEspacio">
             <input type="hidden" name="dni" value="${dniSeleccionado}">
             <label>Seleccionar Vehículo:</label>
             <div class="dato-content">
@@ -107,7 +107,7 @@
 
     <c:if test="${not empty espaciosOcupados}">
         <h3>Liberar Vehículo del Garage</h3>
-        <form method="post" action="${pageContext.request.contextPath}/admin/liberarEspacio">
+        <form method="post" action="${pageContext.request.contextPath}/vehiculo/liberarEspacio">
             <label>Vehículos en Garage:</label>
             <div class="dato-content">
                 <select class="selector" name="matricula">

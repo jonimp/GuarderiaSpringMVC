@@ -57,28 +57,25 @@ public class Configuracion implements WebMvcConfigurer {
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
     }
-    
-    
-    
-    
-    @Bean(name="dbName")
-public String dbName(){
-    return "guarderia";
-}
 
-@Bean(name="dbURL")
-public String dbURL(){
-    return "localhost:3306";
-}
+    @Bean(name = "dbName")
+    public String dbName() {
+        return "guarderia";
+    }
 
-@Bean(name="dbUser")
-public String dbUser(){
-    return "root";
-}
+    @Bean(name = "dbURL")
+    public String dbURL() {
+        return "localhost:3306";
+    }
 
-@Bean(name="dbPswd")
-public String dbPswd(){
-    return "";
-}
+    @Bean(name = "dbUser")
+    public String dbUser() {
+        return "root";
+    }
+
+    @Bean(name = "dbPswd")
+    public String dbPswd() {
+        return "";
+    }
 
 }

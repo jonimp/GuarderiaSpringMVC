@@ -24,7 +24,7 @@
                 <form action="${pageContext.request.contextPath}/vehiculo/registrarVehiculo" method="get">
                     <button type="submit">Registrar vehiculo</button>
                 </form>
-                <form action="${pageContext.request.contextPath}/admin/gestionVehiculo" method="get">
+                <form action="${pageContext.request.contextPath}/vehiculo/gestionVehiculo" method="get">
                     <button type="submit">Gestionar vehiculos en garages</button>
                 </form>
                 <form action="${pageContext.request.contextPath}/admin/asignarEmpleado" method="get">

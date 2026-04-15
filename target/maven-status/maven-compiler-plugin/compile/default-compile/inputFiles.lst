@@ -10,6 +10,7 @@
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/LoginFormDTO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/RegistroUsuarioDTO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/RegistroVehiculoDTO.java
+/home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/dto/ZonaGaragesDTO.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoUsuario.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/enumerador/TipoVehiculo.java
 /home/oem/Escritorio/guarderiaSpring/src/main/java/guarderiaSpring/mapper/UsuarioListadoRowMapper.java

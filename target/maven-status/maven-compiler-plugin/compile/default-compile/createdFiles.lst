@@ -18,6 +18,7 @@ guarderiaSpring/controlador/ControladorVehiculo.class
 guarderiaSpring/dto/RegistroUsuarioDTO.class
 guarderiaSpring/servicio/UsuarioService.class
 guarderiaSpring/controlador/ControladorInicial.class
+guarderiaSpring/dto/ZonaGaragesDTO.class
 guarderiaSpring/modelo/Usuario.class
 guarderiaSpring/servicio/VehiculoService.class
 guarderiaSpring/controlador/ControladorEmpleado.class

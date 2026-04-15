@@ -1,9 +1,9 @@
 package guarderiaSpring.servicio;
 
 import guarderiaSpring.dto.RegistroVehiculoDTO;
+import guarderiaSpring.dto.ZonaGaragesDTO;
 import guarderiaSpring.repositorio.GarageDAO;
 import guarderiaSpring.repositorio.VehiculoDAO;
-import java.sql.SQLException;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +29,12 @@ public class VehiculoService {
         vehiculo.setTipoVehiculo(vDto.getTipoVehiculo());
         vehiculoDAO.agregarVehiculo(vehiculo);
     }
-/*
+
+    /*
     public List<Vehiculo> obtenerVehiculos(String dni) {
         return vehiculoDAO.obtenerVehiculosPorDni(dni);
     }
-*/
+     */
     public EstadoZona calcularEstadoZona(TipoVehiculo tipo) {
 
         List<EspacioGarage> espacios = garageDAO.obtenerPorTipo(tipo);
@@ -46,64 +47,64 @@ public class VehiculoService {
         return new EstadoZona(total, ocupados);
     }
 
+    public ZonaGaragesDTO obtenerEstadoZonaCompleto() {
+
+        ZonaGaragesDTO zona = new ZonaGaragesDTO();
+
+        zona.setMotorhomes(garageDAO.obtenerPorTipo(TipoVehiculo.MOTORHOME));
+        zona.setCasasRodantes(garageDAO.obtenerPorTipo(TipoVehiculo.CASA_RODANTE));
+        zona.setTrailers(garageDAO.obtenerPorTipo(TipoVehiculo.TRAILER));
+
+        zona.setEstadoMotorhome(calcularEstadoZona(TipoVehiculo.MOTORHOME));
+        zona.setEstadoCasaRodante(calcularEstadoZona(TipoVehiculo.CASA_RODANTE));
+        zona.setEstadoTrailer(calcularEstadoZona(TipoVehiculo.TRAILER));
+
+        return zona;
+    }
+
     public Vehiculo buscarPorMatricula(String matricula) {
         return vehiculoDAO.obtenerPorMatricula(matricula);
     }
 
-    public List<EspacioGarage> obtenerEspaciosLibresPorTipo(TipoVehiculo tipo) {
-        return garageDAO.obtenerEspaciosLibresPorTipo(tipo);
-    }
-    /*
-    public List<Vehiculo> obtenerVehiculosPorDniSocio(String dni) {
+    public List<Vehiculo> obtenerVehiculosPorDni(String dni) {
         return vehiculoDAO.obtenerVehiculosPorDni(dni);
     }
-*/
-    public boolean asignarEspacio(Vehiculo vehiculo) {
 
-        if (garageDAO.existeAsignacion(vehiculo.getMatricula())) {
+    public boolean asignarEspacio(String dni, String matricula) {
+
+        Vehiculo vehiculo = vehiculoDAO.obtenerPorMatricula(matricula);
+
+        if (vehiculo == null) {
             return false;
         }
 
-        List<EspacioGarage> libres
-                = garageDAO.obtenerEspaciosLibresPorTipo(
-                        vehiculo.getTipoVehiculo());
+        if (garageDAO.existeAsignacion(matricula)) {
+            return false;
+        }
+
+        List<EspacioGarage> libres = garageDAO.obtenerEspaciosLibresPorTipo(vehiculo.getTipoVehiculo());
 
         if (libres.isEmpty()) {
             return false;
         }
 
         EspacioGarage espacio = libres.get(0);
-
-        garageDAO.asignarEspacio(
-                espacio.getId(),
-                vehiculo.getMatricula()
-        );
+        garageDAO.asignarEspacio(espacio.getId(), matricula);
 
         return true;
     }
 
     public boolean liberarEspacio(String matricula) {
-        return garageDAO.liberarEspacioPorMatricula(matricula);
-    }
 
-    public List<EspacioGarage> obtenerEspaciosOcupados() {
-        return garageDAO.obtenerEspaciosOcupados();
-    }
+        // 🔍 Verificar que exista asignación
+        if (!garageDAO.existeAsignacion(matricula)) {
+            return false;
+        }
 
-    public void asignarEmpleado(int idEspacio, String usuarioEmpleado) {
-        garageDAO.asignarEmpleado(idEspacio, usuarioEmpleado);
-    }
+        // 🔓 Liberar
+        garageDAO.liberarEspacio(matricula);
 
-    public void desasignarEmpleado(int idEspacio) {
-        garageDAO.quitarEmpleado(idEspacio);
-    }
-
-    public List<EspacioGarage> obtenerTodosLosEspacios() {
-        return garageDAO.obtenerEspacios();
-    }
-
-    public List<EspacioGarage> obtenerEspaciosPorEmpleado(String dniEmpleado) {
-        return garageDAO.buscarEspaciosPorEmpleado(dniEmpleado);
+        return true;
     }
 
 } //FIN DE CLASE    
